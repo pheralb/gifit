@@ -1,0 +1,26 @@
+{
+  "short_name": "Gifit",
+  "name": "Gifit",
+  "icons": [
+    {
+      "src": "img/gifit.png",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/png"
+    },
+    {
+      "src": "img/gifit.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "img/gifit.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#B800A7",
+  "background_color": "#ffffff"
+}
+
