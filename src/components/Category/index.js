@@ -16,14 +16,14 @@ export default function Category({ name, options = [] }) {
         mx={0}
         overflowX="auto"
       >
-        <Tabs defaultIndex={1}>
+        <Tabs>
           <TabList>
           {options.map((singleOption, index) => (
-            <Link to={`/search/${singleOption}`} index={index}>
-              <Tab _focus={{ boxShadow: "none" }} _hover={{ bg:"blue.800" }}> 
-                  #{singleOption}
-              </Tab>
-            </Link>
+              <Link  to={`/search/${singleOption}`} index={index}>
+                <Tab color="white.900" _focus={{ boxShadow: "none" }} _hover={{ bg:"blue.800" }}> 
+                    #{singleOption}
+                </Tab>
+              </Link >
           ))}
           </TabList>
         </Tabs>

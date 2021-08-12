@@ -21,6 +21,7 @@ import {
   } from "@chakra-ui/react";
   import { List } from "phosphor-react";
 import Search from 'components/SearchForm';
+import AuthComponent from '../AuthComponent';
 /*-----------------------------------------------*/
 /* Links: */
 const HEADER_LINKS = [{
@@ -47,12 +48,12 @@ const NavLink = ({ href, literal }) => {
 /*-----------------------------------------------*/
 const Header = () => {
 
-    const bg = useColorModeValue("white", "gray.800");
+    const bg = useColorModeValue("dark.800", "dark.800");
     const mobileNav = useDisclosure();
 
     return (
         <>
-                        <chakra.header
+            <chakra.header
                 w="full"
                 px={{ base: 2, sm: 4 }}
                 py={3}
@@ -62,7 +63,7 @@ const Header = () => {
                 zIndex="1000"
             >
                 <Flex alignItems="center" justifyContent="space-between" mx="auto">
-                <Flex>
+                <Flex data-aos="flip-left">
                     <Link href="/home#">
                         <chakra.a
                         title="Gifiiii"
@@ -82,6 +83,7 @@ const Header = () => {
                     display={{ base: "none", md: "inline-flex" }}
                     >
                         {HEADER_LINKS.map(link => <NavLink key={link.href} {...link} />)}
+                        <AuthComponent />
                         <Search />
                     </HStack>
                     <ScaleFade initialScale={0.9} in={mobileNav.onOpen}>
@@ -90,7 +92,7 @@ const Header = () => {
                         display={{ base: "flex", md: "none" }}
                         aria-label="Open menu"
                         fontSize="30px"
-                        color={useColorModeValue("gray.800", "inherit")}
+                        color="white"
                         variant="ghost"
                         icon={<List />}
                         onClick={mobileNav.onOpen}
@@ -104,8 +106,7 @@ const Header = () => {
                             flexDirection="column"
                             p={2}
                             pb={4}
-                            m={2}
-                            bg={bg}
+                            bg="gray.900"
                             spacing={3}
                             rounded="sm"
                             shadow="sm"
@@ -115,6 +116,7 @@ const Header = () => {
                             onClick={mobileNav.onClose}
                             />
                             {HEADER_LINKS.map(link => <NavLink key={link.href} {...link} />)}
+                            <AuthComponent />
                             <Search />
                         </VStack>  
                     </Box>

@@ -11,7 +11,11 @@ import Header from './components/Global/Header';
 import StaticContext from './context/StaticContext';
 import {GifsContextProvider} from './context/GifsContext';
 import TrendingSearches from 'components/TrendingSearches';
-
+import AOS from "aos";
+import "aos/dist/aos.css";
+AOS.init({
+  duration: 500
+});
 function App() {
   return (
     <>

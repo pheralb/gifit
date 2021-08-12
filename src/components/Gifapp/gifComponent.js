@@ -17,7 +17,9 @@ export default function Gif ({ title, id, url }) {
                 >
                 <Box
                     w="xs"
-                    bg={useColorModeValue("white", "blue.900")}
+                    bg="dark.900"
+                    border= "1px"
+                    borderColor= "gray.900"
                     shadow="lg"
                     rounded="lg"
                     overflow="hidden"
@@ -39,7 +41,9 @@ export default function Gif ({ title, id, url }) {
                     loading='lazy'
                     />
                     <Box py={5} textAlign="center">
+                    <div className="colorful-1">
                         {title}
+                    </div>
                     </Box>
                     </Link>
                 </Box>

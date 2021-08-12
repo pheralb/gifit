@@ -6,6 +6,8 @@ import { extendTheme } from '@chakra-ui/react'
  }
 
 const theme = extendTheme({
+  initialColorMode: "dark",
+  useSystemColorMode: false,
   fonts: {
     body: "roboto",
     heading: "roboto",
@@ -43,6 +45,7 @@ const theme = extendTheme({
           // borderColor: "gray.600"
         }
       },
+      // styles for the `heading`:
       heading: {
         bg:"#0a0b0d",
         color: "white",
@@ -51,6 +54,7 @@ const theme = extendTheme({
         fontFamily: "Share Tech Mono",
         fontWeight: "normal"
       },
+      // styles for the `menu`:
       Menu: {
         bg:"#0a0b0d",
         color: "white",
@@ -58,6 +62,11 @@ const theme = extendTheme({
       MenuList: {
         bg:"#0a0b0d",
         color: "white",
+      },
+      // styles for the `menu`:
+      Tab: {
+        bg:"#0a0b0d",
+        color: "blue",
       }
     },
   },

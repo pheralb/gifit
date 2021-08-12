@@ -18,3 +18,26 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #555; 
 }
+/*-----------------------------------*/
+.colorful-1 {
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+  background: linear-gradient(90deg,#FF3D7F 50%,#000 0) right/200% 100% no-repeat;
+  -webkit-background-clip: text;
+  background-clip: text;
+  transition: .4s linear;
+}
+.colorful-1:hover {
+  background-position: left;
+}
+.colorful-1:before {
+  content:"";
+  position: absolute;
+  inset:auto 0 0 100%;
+  height: 4px;
+  background: #FF3D7F;
+  transition: inherit;
+}
+.colorful-1:hover:before {
+  inset:auto 0 0 0;
+}

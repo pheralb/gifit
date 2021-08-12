@@ -27,9 +27,11 @@ export default function Search ({ params }){
             {/* <SearchForm initialKeyword={keyword} initialRating={rating} /> */}
             </header>
             <div className="App-wrapper">
-            <Center bg="gray.800" width="100%" p={4} color="white">
-                <Text fontSize="4xl">{decodeURI(keyword)}</Text>
-            </Center>
+            <div className="cloned-2">
+                <Center bg="gray.800" width="100%" p={4} color="white">
+                    <Text fontSize="4xl" data-aos="fade-right" data-aos-duration="300">{decodeURI(keyword)}</Text>
+                </Center>
+            </div> 
             <ListOfGifs gifs={gifs} />
             <Flex
             mt="15px"
