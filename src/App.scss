@@ -1,3 +1,11 @@
+@font-face {
+  font-family: "Gifitfont";
+  src: url("/themes/fonts/BeVietnamPro-SemiBold.ttf");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+/*-----------------------------------*/
 /* width */
 ::-webkit-scrollbar {
   width: 6px;
@@ -11,7 +19,7 @@
  
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: rgb(233, 229, 33); 
+  background: rgb(0, 40, 173); 
 }
 
 /* Handle on hover */
@@ -19,25 +27,3 @@
   background: #555; 
 }
 /*-----------------------------------*/
-.colorful-1 {
-  color: rgb(255, 255, 255);
-  font-weight: bold;
-  background: linear-gradient(90deg,#FF3D7F 50%,#000 0) right/200% 100% no-repeat;
-  -webkit-background-clip: text;
-  background-clip: text;
-  transition: .4s linear;
-}
-.colorful-1:hover {
-  background-position: left;
-}
-.colorful-1:before {
-  content:"";
-  position: absolute;
-  inset:auto 0 0 100%;
-  height: 4px;
-  background: #FF3D7F;
-  transition: inherit;
-}
-.colorful-1:hover:before {
-  inset:auto 0 0 0;
-}

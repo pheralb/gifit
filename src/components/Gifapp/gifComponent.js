@@ -1,53 +1,46 @@
-import React from 'react'
-import {
-    chakra,
-    Box,
-    Image,
-    Flex,
-    useColorModeValue
-  } from "@chakra-ui/react";
-import {Link} from 'wouter';
-export default function Gif ({ title, id, url }) {
-    return (
-        <>
-            <Flex
-                w="full"
-                alignItems="center"
-                justifyContent="center"
+import React from "react";
+import { Box, Image, Flex, Tooltip } from "@chakra-ui/react";
+import { Link } from "wouter";
+import { motion } from "framer-motion";
+export default function Gif({ title, id, url }) {
+  return (
+    <>
+      <Flex w="full" alignItems="center" justifyContent="center">
+          <Tooltip label={title} aria-label={title}>
+            <motion.div
+              whileHover={{
+                scale: 1.1,
+                textShadow: "0px 0px 4px gray",
+              }}
+            >
+              <Box
+                w="xs"
+                bg="dark.900"
+                shadow="lg"
+                rounded="lg"
+                overflow="hidden"
+                mx="auto"
+              >
+                <Link
+                  to={`/gif/${id}`}
+                  display="block"
+                  fontSize="2xl"
+                  fontWeight="bold"
                 >
-                <Box
-                    w="xs"
-                    bg="dark.900"
-                    border= "1px"
-                    borderColor= "gray.900"
-                    shadow="lg"
-                    rounded="lg"
-                    overflow="hidden"
-                    mx="auto"
-                >
-                    <Link
-                        to={`/gif/${id}`}
-                        display="block"
-                        fontSize="2xl"
-                        color={useColorModeValue("gray.800", "white")}
-                        fontWeight="bold"
-                    >
-                    <Image
+                  <Image
                     w="full"
                     h={56}
                     fit="cover"
                     src={url}
                     alt={title}
-                    loading='lazy'
-                    />
-                    <Box py={5} textAlign="center">
-                    <div className="colorful-1">
-                        {title}
-                    </div>
-                    </Box>
-                    </Link>
-                </Box>
-            </Flex>
-        </>
-    )
+                    loading="lazy"
+                    cursor="pointer"
+                  />
+                </Link>
+              </Box>
+            </motion.div>
+          </Tooltip>
+      </Flex>
+    </>
+  );
 }
