@@ -17,9 +17,10 @@ import {
   CloseButton,
   ScaleFade,
   Text,
+  Image 
 } from "@chakra-ui/react";
 import { List, GithubLogo, House } from "phosphor-react";
-import Search from "components/SearchForm";
+import Search from "components/Search";
 import Dark from "components/Global/Dark";
 import { motion } from "framer-motion";
 /*-----------------------------------------------*/
@@ -29,11 +30,6 @@ const HEADER_LINKS = [
     href: "/",
     literal: "Home",
     icon: <House size="25" />,
-  },
-  {
-    href: "https://github.com/pheralb/gifit",
-    literal: "Github",
-    icon: <GithubLogo size="25" />,
   },
 ];
 /*-----------------------------------------------*/
@@ -73,11 +69,10 @@ const Header = () => {
           <Flex data-aos="flip-left">
             <motion.button
               whileHover={{
-                scale: 1.2,
-                backgroundColor: "#333333",
+                scale: 1.2
               }}
             >
-              <Link href="/home#">
+              <Link href="/">
                 <chakra.a title="Gifii" display="flex" alignItems="center">
                   <Text fontSize="3xl">Gifit</Text>
                   <VisuallyHidden>GIFIT</VisuallyHidden>
@@ -104,7 +99,7 @@ const Header = () => {
                   display={{ base: "flex", md: "none" }}
                   aria-label="Open menu"
                   fontSize="30px"
-                  color="white"
+                  color={color}
                   variant="ghost"
                   icon={<List />}
                   onClick={mobileNav.onOpen}
@@ -118,7 +113,7 @@ const Header = () => {
                   flexDirection="column"
                   p={2}
                   pb={4}
-                  bg="gray.900"
+                  bg={bg}
                   spacing={3}
                   rounded="sm"
                   shadow="sm"
@@ -131,6 +126,7 @@ const Header = () => {
                   {HEADER_LINKS.map((link) => (
                     <NavLink key={link.href} {...link} />
                   ))}
+                  <Dark />
                 </VStack>
               </Box>
             </ScaleFade>

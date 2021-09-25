@@ -3,14 +3,18 @@ import { Redirect } from "wouter";
 import Gif from "components/Gifapp/singleGif";
 import useSingleGif from "hooks/useSingleGif";
 import Spinner from "components/Spinner";
+import ListOfGifs from 'components/Gifapp/ListOfGifs';
+import { useGifs } from 'hooks/useGifs';
 import { Helmet } from "react-helmet";
 import { chakra, Box, Flex, Button, useToast } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { Copy } from "phosphor-react";
 
 export default function Detail({ params }) {
+
   const { gif, isLoading, isError } = useSingleGif({ id: params.id });
   const [copied, setCopied] = useState(false);
+  const { gifs } = useGifs();
   const title = gif ? gif.title : "";
   const toast = useToast()
 
@@ -18,7 +22,7 @@ export default function Detail({ params }) {
     return (
       <>
         <Helmet>
-          <title>Cargando...</title>
+          <title>Loading...</title>
         </Helmet>
         <Spinner />
       </>
@@ -50,7 +54,6 @@ export default function Detail({ params }) {
       isClosable: true,
     })
   }
-
   return (
     <>
       <Helmet>
@@ -62,19 +65,18 @@ export default function Detail({ params }) {
         animate="enter" // Animated state to variants.enter
         exit="exit" // Exit state (used later) to variants.exit
         transition={{ type: "linear" }} // Set the transition to linear
-        className=""
       >
-        <Flex p={50} w="full" alignItems="center" justifyContent="center" borderBottom="1px" borderColor="gray.700">
+        <Flex p={{ base: "3", md: "5", lg: "50" }} w="full" alignItems="center" justifyContent="center">
           <Box
             mx={{ lg: 8 }}
             display={{ lg: "flex" }}
             maxW={{ lg: "5xl" }}
           >
-            <Box w={{ lg: "100%" }}>
+            <Box w={{ lg: "100%" }} mb="3">
               <Gif {...gif} />
             </Box>
             <Box
-              py={12}
+              py={{ base: "5", md: "12" }}
               px={6}
               maxW={{ base: "xl", lg: "5xl" }}
               w={{ lg: "50%" }}
@@ -88,16 +90,17 @@ export default function Detail({ params }) {
               <Box mt={8}>
                 <Button
                   onClick={copy}
+                  colorScheme="teal"
                   variant="ghost"
-                  color="gray.100"
+                  border="1px"
                   px={5}
                   py={3}
                   fontWeight="semibold"
                   rounded="lg"
-                  _hover={{ bg: "gray.800" }}
                   leftIcon={<Copy />}
+                  w={{ base: "100%" }}
                 >
-                  {!copied ? "Copy link" : "Copied!"}
+                  Copy
                 </Button>
               </Box>
             </Box>

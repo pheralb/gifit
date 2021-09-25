@@ -15,13 +15,14 @@ import {
   Button,
   useDisclosure,
   Select,
-  Divider,
   chakra,
-  ListItem,
-  UnorderedList,
-  useColorModeValue
+  useColorModeValue,
+  Divider,
+  useToast 
 } from "@chakra-ui/react";
-import { MagnifyingGlass, Gear } from "phosphor-react";
+import { MagnifyingGlass, Gear, ArrowSquareDown, Check } from "phosphor-react";
+import Info from './info';
+
 
 const RATINGS = ["g", "pg", "pg-13", "r"];
 
@@ -30,7 +31,7 @@ export default function SearchForm({
   initialRating = RATINGS[0],
 }) {
   const [_, pushLocation] = useLocation();
-
+  const toast = useToast()
   const { keyword, rating, changeKeyword, changeRating } = useForm({
     initialKeyword,
     initialRating,
@@ -54,12 +55,18 @@ export default function SearchForm({
 
   const handleChangeRating = (evt) => {
     changeRating({ rating: evt.target.value });
+    toast({
+      title: "You have changed the rating filter",
+      status: "warning",
+      duration: 4000,
+      isClosable: true,
+    })
   };
 
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const { isOpen, onOpen, onClose, onToggle } = useDisclosure();
 
   const bg = useColorModeValue("gray.200", "#151515");
-  const color = useColorModeValue("transparent", "gray.600");
+  const color = useColorModeValue("gray.600", "gray.600");
 
   return (
     <>
@@ -76,43 +83,28 @@ export default function SearchForm({
             borderColor={color}
           />{" "}
         </InputGroup>
-        <Modal isOpen={isOpen} onClose={onClose}>
+        <Modal isOpen={isOpen} onClose={onClose} size="xl">
           <ModalOverlay />
           <ModalContent bg={bg}>
-            <ModalHeader>Search filter</ModalHeader>
+            <ModalHeader>Settings</ModalHeader>
             <ModalCloseButton />
             <ModalBody>
-              <chakra.h1>Type:</chakra.h1>
-              <Select value={rating} onChange={handleChangeRating} mb="2" borderColor={color}>
+              <chakra.h1 mb="2">Search filter:</chakra.h1>
+              <Select
+                value={rating}
+                onChange={handleChangeRating}
+                mb="2"
+                borderColor={color}
+                icon={<ArrowSquareDown/>}
+              >
                 {RATINGS.map((rating) => (
                   <option key={rating}>{rating}</option>
                 ))}
               </Select>
-              <Divider mb="3" />
-              <UnorderedList>
-                <ListItem p="3">
-                  G - Level 1 - Contains images that are broadly accepted as
-                  appropriate and commonly witnessed by people in a public
-                  environment.
-                </ListItem>
-                <ListItem p="3">
-                  PG - Level 2 - Contains images that are commonly witnessed in
-                  a public environment, but not as broadly accepted as
-                  appropriate.
-                </ListItem>
-                <ListItem p="3">
-                  PG13 - Level 3 - Contains images that are typically not seen
-                  unless sought out, but still commonly witnessed.
-                </ListItem>
-                <ListItem p="3">
-                  R - Level 4 (+18) - Contains images that are typically not
-                  seen unless sought out and could be considered alarming if
-                  witnessed.
-                </ListItem>
-              </UnorderedList>
+              <Info />              
             </ModalBody>
             <ModalFooter>
-              <Button colorScheme="blue" mr={3} onClick={onClose}>
+              <Button colorScheme="teal" leftIcon={<Check />} variant="ghost" mr={3} onClick={onClose}>
                 Save
               </Button>
             </ModalFooter>

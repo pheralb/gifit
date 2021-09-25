@@ -10,7 +10,7 @@ export default function Search ({ params }){
     const { loading, gifs, setPage } = useGifs({ keyword, rating })
     
     const externalRef = useRef() 
-    const title = gifs ? `${gifs.length} results - ${keyword}` : ''
+    const title = gifs ? `${keyword}` : ''
 
     const handleNextPage = () => setPage(prevPage => prevPage + 1)
 

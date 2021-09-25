@@ -1,10 +1,10 @@
 import { useEffect, useState, useContext } from 'react';
-import getGifs from '../services/getGifs';
-import GifsContext from '../context/GifsContext';
+import getGifs from 'services/getGifs';
+import GifsContext from 'context/GifsContext';
 
 const INITIAL_PAGE = 0;
 
-export function useGifs({ keyword } = { keyword: null}){
+export function useGifs({ keyword } = { keyword: "dance"}){
 
     const [loading, setLoading] = useState(false);
     const [loadingNextPage, setLoadingNextPage] = useState(false);

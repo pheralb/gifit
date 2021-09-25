@@ -24,11 +24,12 @@ const Dark = () => {
 
   return (
     <Button
-      variant="solid"
+    variant="ghost"
       onClick={toggleTheme}
       bg={bg}
       leftIcon={<Palette size="25" />}
       fontWeight="light"
+
     >
       {colorMode === "light" ? "Dark" : "Light"}
     </Button>

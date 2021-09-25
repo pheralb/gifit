@@ -2,16 +2,17 @@ import React from "react";
 import { Link } from "wouter";
 import { Flex, Tabs, TabList, Tab, useColorModeValue } from "@chakra-ui/react";
 
-export default function Category({ name, options = [] }) {
+export default function Category({ options = [] }) {
+
   const bg = useColorModeValue("gray.200", "#151515");
-  const color = useColorModeValue("gray.900", "gray.600");
+  const color = useColorModeValue("blue.300", "gray.600");
 
   return (
     <>
       <Flex
         alignItems="center"
         justifyContent="space-between"
-        mx={0}
+        maxW="100%"
         overflowX="auto"
         bg={bg}
       >
@@ -22,8 +23,8 @@ export default function Category({ name, options = [] }) {
                 <Tab
                   color="white.900"
                   _focus={{ boxShadow: "none" }}
-                  _hover={{ bg: { color } }}
-                  fontSize="sm"
+                  _hover={{ bg: color }}
+                  fontSize="md"
                 >
                   #{singleOption}
                 </Tab>
