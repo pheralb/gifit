@@ -29,7 +29,7 @@ export default function Detail({ params }) {
   }
 
   if (isError) return <Redirect to="/404" />;
-  if (!gif) return <Redirect to="/" />;
+  if (!gif) return null;
 
   const variants = {
     hidden: { opacity: 0, x: -200, y: 0 },
