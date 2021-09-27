@@ -39,8 +39,8 @@ const Home = () => {
               lineHeight="none"
               letterSpacing={{ base: "normal", md: "tight" }}
               color={useColorModeValue("white", "gray.100")}
-            >
-              A beautiful web to discover gifs
+            >           
+            A beautiful place for the perfect gif
             </chakra.h1>
           </motion.div>
           <Center mb={6}>
