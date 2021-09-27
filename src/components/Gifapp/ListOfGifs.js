@@ -9,7 +9,7 @@ export default function ListOfGifs({ gifs }) {
         minChildWidth={[300, 400, 300]} 
         columns={4} 
         spacing={6} 
-        pt={3}>
+        pt={5}>
         {gifs.map(({ id, title, url }) => (
           <Gif key={id} title={title} url={url} id={id} />
         ))}

@@ -1,3 +1,5 @@
+$colors: #6972ff, #ff30e3, #fffa96, #30e0ff;
+
 @font-face {
   font-family: "Gifitfont";
   src: url("/themes/fonts/BeVietnamPro-SemiBold.ttf");
@@ -8,22 +10,22 @@
 /*-----------------------------------*/
 /* width */
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 9px;
   height: 6px;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: #0c0c0c; 
+  background: #0c0c0c;
 }
- 
+
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: rgb(0, 40, 173); 
+  background: rgb(113, 146, 255);
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #555; 
+  background: rgb(182, 182, 182);
 }
 /*-----------------------------------*/

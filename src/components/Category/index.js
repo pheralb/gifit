@@ -21,10 +21,13 @@ export default function Category({ options = [] }) {
             {options.map((singleOption, index) => (
               <Link to={`/search/${singleOption}`} index={index}>
                 <Tab
+                  key={singleOption}
                   color="white.900"
                   _focus={{ boxShadow: "none" }}
                   _hover={{ bg: color }}
                   fontSize="md"
+                  h="60px"
+                  isTruncated
                 >
                   #{singleOption}
                 </Tab>

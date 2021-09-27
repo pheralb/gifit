@@ -1,31 +1,39 @@
-import React from "react";
-import { Switch, Route } from "wouter";
-import "./App.scss";
-import "@fontsource/roboto/400.css";
+import React, { useEffect, Suspense } from "react";
+import { Switch, Route, useLocation } from "wouter";
+import "App.scss";
 
-import Search from "./pages/Search";
-import Home from "./pages/Home/index";
-import Details from "./pages/Details/index";
-import ErrorPage from "./pages/404/index";
+import Search from "pages/Search";
 
-import Header from "./components/Global/Header";
-import Footer from './components/Global/Footer';
+import Details from "pages/Details/index";
+import ErrorPage from "pages/404/index";
 
-import StaticContext from "./context/StaticContext";
-import { GifsContextProvider } from "./context/GifsContext";
+import Header from "components/Global/Header";
+import Footer from "components/Global/Footer";
 import TrendingSearches from "components/Trending";
-import AOS from "aos";
-import "aos/dist/aos.css";
-AOS.init({
-  duration: 500,
-});
+import Spinner from "components/Spinner/loader";
+
+import { GifsContextProvider } from "context/GifsContext";
+
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+}
+
+const Home = React.lazy(() => import("pages/Home/"));
+
 function App() {
   return (
     <>
-      <StaticContext.Provider value={{ name: "gifit" }}>
+      <Suspense fallback={<Spinner />}>
         <Header />
         <TrendingSearches />
         <GifsContextProvider>
+          <ScrollToTop />
           <Switch>
             <Route component={Home} path="/" />
             <Route component={Home} path="/home" />
@@ -35,7 +43,7 @@ function App() {
           </Switch>
         </GifsContextProvider>
         <Footer />
-      </StaticContext.Provider>
+      </Suspense>
     </>
   );
 }

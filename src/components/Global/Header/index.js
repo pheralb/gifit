@@ -66,7 +66,7 @@ const Header = () => {
         bg={bg}
       >
         <Flex alignItems="center" justifyContent="space-between" mx="auto">
-          <Flex data-aos="flip-left">
+          <Flex>
             <motion.button
               whileHover={{
                 scale: 1.2
@@ -87,7 +87,9 @@ const Header = () => {
               color="brand.500"
               display={{ base: "none", md: "inline-flex" }}
             >
-              <Search />
+              <Box mr="3">
+                <Search />
+              </Box>
               {HEADER_LINKS.map((link) => (
                 <NavLink key={link.href} {...link} />
               ))}
@@ -138,3 +140,4 @@ const Header = () => {
 };
 
 export default Header;
+

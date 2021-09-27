@@ -1,54 +1,86 @@
 import {
   Stack,
-  Button,
-  Text,
-  useColorModeValue,
-  Flex,
   Link,
+  Box,
+  Text,
+  Container,
+  ButtonGroup,
+  Image,
+  Divider,
+  IconButton,
+  Button,
+  Tooltip,
+  useColorModeValue
 } from "@chakra-ui/react";
 import Giphy from "images/giphy";
+import Midu from "images/midu.ico";
+import { GitFork, TwitterLogo } from "phosphor-react";
 
 const Footer = () => {
+  const color = useColorModeValue("blue.300", "gray.600");
   return (
-    <Stack
-      as="footer"
-      isInline
-      spacing={[1, 2]}
-      mt="5"
-      p={4}
-      justifyContent="space-between"
-      alignItems="center"
-      w={["100%", "85%", "80%"]}
-      maxW={800}
-      mx="auto"
-      borderTop="1px"
-      borderColor="gray.700"
-    >
-      <Flex
-        flexDirection={["column", "column", "row"]}
-        flexFlow={["column-reverse", "column-reverse"]}
-        justifyContent={["center", "center"]}
-        alignItems="center"
-        w="100%"
+    <>
+      <Box
+        as="footer"
+        role="contentinfo"
+        mx="auto"
+        maxW="7x2"
+        py="6"
+        px={{ base: "8", md: "8" }}
       >
-        <Text
-          textAlign="center"
-          fontSize="lg"
-          color={useColorModeValue("gray.500", "gray.200")}
-        >
-          Created by{" "}
-          <Link href="https://github.com/pheralb" isExternal>
-            Pablo
-          </Link>{" "}
-          using{" "}
-          <Link href="https://giphy.com/" isExternal>
-            <Button colorScheme="teal" leftIcon={<Giphy />} variant="ghost">
-              GIPHY
+        <Container maxW="container.lg">
+          <Stack
+            direction="row"
+            spacing="4"
+            align="center"
+            justify="space-between"
+            pb={2}
+          >
+            <ButtonGroup variant="ghost">
+              <Tooltip label="Repository" hasArrow>
+                <IconButton
+                  as="a"
+                  href="https://github.com/pheralb/gifit"
+                  aria-label="github"
+                  icon={<GitFork fontSize="20px" />}
+                />
+              </Tooltip>
+              <Tooltip label="Twitter" hasArrow>
+                <IconButton
+                  as="a"
+                  href="https://twitter.com/pheralb_"
+                  aria-label="Twitter"
+                  icon={<TwitterLogo size="25" />}
+                />
+              </Tooltip>
+              <Tooltip label="midudev" hasArrow>
+                <IconButton
+                  as="a"
+                  href="https://midu.dev/"
+                  aria-label="midudev"
+                  icon={<Image src={Midu} height="30px" />}
+                />
+              </Tooltip>
+            </ButtonGroup>
+          </Stack>
+          <Stack direction="row" align="center" justify="space-between" pt={5} borderTop="1px" borderColor={color}>
+            <Text fontSize="md">&copy; Created by Pablo</Text>
+            <Button
+              as={Link}
+              bg="transparent"
+              rounded="md"
+              aria-label="Using Giphy"
+              rel="noopener"
+              href="https://developers.giphy.com/branch/master/docs/"
+              isExternal
+              leftIcon={<Giphy />}
+            >
+              Giphy
             </Button>
-          </Link>
-        </Text>
-      </Flex>
-    </Stack>
+          </Stack>
+        </Container>
+      </Box>
+    </>
   );
 };
 

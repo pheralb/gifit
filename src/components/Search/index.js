@@ -5,11 +5,11 @@ import {
   Input,
   InputLeftElement,
   InputGroup,
+  InputRightElement,
   Modal,
   ModalOverlay,
   ModalContent,
   ModalHeader,
-  ModalFooter,
   ModalBody,
   ModalCloseButton,
   Button,
@@ -17,12 +17,11 @@ import {
   Select,
   chakra,
   useColorModeValue,
-  Divider,
-  useToast 
+  useToast,
+  Tooltip
 } from "@chakra-ui/react";
 import { MagnifyingGlass, Gear, ArrowSquareDown, Check } from "phosphor-react";
-import Info from './info';
-
+import Info from "./info";
 
 const RATINGS = ["g", "pg", "pg-13", "r"];
 
@@ -31,7 +30,7 @@ export default function SearchForm({
   initialRating = RATINGS[0],
 }) {
   const [_, pushLocation] = useLocation();
-  const toast = useToast()
+  const toast = useToast();
   const { keyword, rating, changeKeyword, changeRating } = useForm({
     initialKeyword,
     initialRating,
@@ -60,13 +59,13 @@ export default function SearchForm({
       status: "warning",
       duration: 4000,
       isClosable: true,
-    })
+    });
   };
 
   const { isOpen, onOpen, onClose, onToggle } = useDisclosure();
 
   const bg = useColorModeValue("gray.200", "#151515");
-  const color = useColorModeValue("gray.600", "gray.600");
+  const color = useColorModeValue("gray.400", "gray.600");
 
   return (
     <>
@@ -77,43 +76,48 @@ export default function SearchForm({
             children={<MagnifyingGlass size={24} />}
           />
           <Input
+            variant="filled"
             type="text"
             placeholder="Type a gif here :)"
             onChange={handleChange}
             borderColor={color}
-          />{" "}
+          />
+          <Tooltip label="Search settings" hasArrow aria-label="A tooltip">
+          <InputRightElement width="3.5rem">
+            <Button
+              variant="ghost"
+              onClick={onOpen}
+              size="sm"
+            >
+              <Gear size="20"/>
+              </Button>
+          </InputRightElement>
+          </Tooltip>
         </InputGroup>
         <Modal isOpen={isOpen} onClose={onClose} size="xl">
           <ModalOverlay />
-          <ModalContent bg={bg}>
-            <ModalHeader>Settings</ModalHeader>
+          <ModalContent bg={bg} border="1px" borderColor="gray.600">
+            <ModalHeader>
+              Search filter:
+            </ModalHeader>
             <ModalCloseButton />
-            <ModalBody>
-              <chakra.h1 mb="2">Search filter:</chakra.h1>
+            <ModalBody mt="3" mb="4">
               <Select
                 value={rating}
                 onChange={handleChangeRating}
                 mb="2"
                 borderColor={color}
-                icon={<ArrowSquareDown/>}
+                icon={<ArrowSquareDown />}
               >
                 {RATINGS.map((rating) => (
                   <option key={rating}>{rating}</option>
                 ))}
               </Select>
-              <Info />              
+              <Info />
             </ModalBody>
-            <ModalFooter>
-              <Button colorScheme="teal" leftIcon={<Check />} variant="ghost" mr={3} onClick={onClose}>
-                Save
-              </Button>
-            </ModalFooter>
           </ModalContent>
         </Modal>
       </form>
-      <Button onClick={onOpen} variant="ghost" leftIcon={<Gear size="25" />}>
-        Settings
-      </Button>
     </>
   );
 }

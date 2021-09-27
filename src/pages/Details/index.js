@@ -3,20 +3,19 @@ import { Redirect } from "wouter";
 import Gif from "components/Gifapp/singleGif";
 import useSingleGif from "hooks/useSingleGif";
 import Spinner from "components/Spinner";
-import ListOfGifs from 'components/Gifapp/ListOfGifs';
-import { useGifs } from 'hooks/useGifs';
+import { useGifs } from "hooks/useGifs";
 import { Helmet } from "react-helmet";
 import { chakra, Box, Flex, Button, useToast } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { Copy } from "phosphor-react";
+import confetti from "canvas-confetti";
 
 export default function Detail({ params }) {
-
   const { gif, isLoading, isError } = useSingleGif({ id: params.id });
   const [copied, setCopied] = useState(false);
   const { gifs } = useGifs();
   const title = gif ? gif.title : "";
-  const toast = useToast()
+  const toast = useToast();
 
   if (isLoading) {
     return (
@@ -30,14 +29,13 @@ export default function Detail({ params }) {
   }
 
   if (isError) return <Redirect to="/404" />;
-  if (!gif) return null;
+  if (!gif) return <Redirect to="/" />;
 
   const variants = {
     hidden: { opacity: 0, x: -200, y: 0 },
     enter: { opacity: 1, x: 0, y: 0 },
     exit: { opacity: 0, x: 0, y: -100 },
   };
-
 
   function copy() {
     const el = document.createElement("input");
@@ -52,7 +50,12 @@ export default function Detail({ params }) {
       status: "success",
       duration: 3000,
       isClosable: true,
-    })
+    });
+    confetti({
+      particleCount: 50,
+      startVelocity: 30,
+      spread: 360,
+    });
   }
   return (
     <>
@@ -66,12 +69,14 @@ export default function Detail({ params }) {
         exit="exit" // Exit state (used later) to variants.exit
         transition={{ type: "linear" }} // Set the transition to linear
       >
-        <Flex p={{ base: "3", md: "5", lg: "50" }} w="full" alignItems="center" justifyContent="center">
-          <Box
-            mx={{ lg: 8 }}
-            display={{ lg: "flex" }}
-            maxW={{ lg: "5xl" }}
-          >
+        <Flex
+          p={{ base: "3", md: "5", lg: "50" }}
+          w="full"
+          
+          alignItems="center"
+          justifyContent="center"
+        >
+          <Box display={{ lg: "flex" }} maxW={{ lg: "5xl" }}>
             <Box w={{ lg: "100%" }} mb="3">
               <Gif {...gif} />
             </Box>
@@ -88,20 +93,24 @@ export default function Detail({ params }) {
                 {gif.title}
               </chakra.h2>
               <Box mt={8}>
-                <Button
-                  onClick={copy}
-                  colorScheme="teal"
-                  variant="ghost"
-                  border="1px"
-                  px={5}
-                  py={3}
-                  fontWeight="semibold"
-                  rounded="lg"
-                  leftIcon={<Copy />}
-                  w={{ base: "100%" }}
+                <motion.button
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
                 >
-                  Copy
-                </Button>
+                  <Button
+                    onClick={copy}
+                    colorScheme="teal"
+                    variant="ghost"
+                    border="1px"
+                    px={5}
+                    py={3}
+                    fontWeight="semibold"
+                    rounded="lg"
+                    leftIcon={<Copy />} 
+                  >
+                    Copy
+                  </Button>
+                </motion.button>
               </Box>
             </Box>
           </Box>
