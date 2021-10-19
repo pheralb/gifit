@@ -1,0 +1,22 @@
+{
+    "cleanUrls": true,
+    "trailingSlash": false,
+    "redirects": [
+      {
+        "source": "/g",
+        "destination": "https://github.com/pheralb/notart"
+      },
+      {
+        "source": "/github",
+        "destination": "https://github.com/pheralb/notart"
+      },
+      {
+        "source": "/tw",
+        "destination": "https://twitter.com/pheralb_"
+      },
+      {
+        "source": "/twitter",
+        "destination": "https://twitter.com/pheralb_"
+      }
+    ]
+  }
