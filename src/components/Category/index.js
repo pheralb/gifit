@@ -3,7 +3,6 @@ import { Link } from "wouter";
 import { Flex, Tabs, TabList, Tab, useColorModeValue } from "@chakra-ui/react";
 
 export default function Category({ options = [] }) {
-
   const bg = useColorModeValue("gray.200", "#151515");
   const color = useColorModeValue("blue.300", "gray.600");
 

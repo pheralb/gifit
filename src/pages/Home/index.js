@@ -9,7 +9,7 @@ import {
 } from "@chakra-ui/react";
 import ListOfGifs from "components/Gifapp/ListOfGifs";
 import { useGifs } from "hooks/useGifs";
-import { motion } from "framer-motion";
+import Section from "components/Global/Section";
 import giphy from "images/animations/giphy4.gif";
 import { Helmet } from "react-helmet";
 
@@ -26,11 +26,7 @@ const Home = () => {
           mx="auto"
           textAlign={{ base: "center", md: "center" }}
         >
-          <motion.div
-            initial="hidden"
-            animate="show"
-            exit="hidden"
-          >
+          <Section>
             <chakra.h1
               mt="10"
               mb={6}
@@ -42,7 +38,7 @@ const Home = () => {
             >           
             A beautiful place for the perfect gif
             </chakra.h1>
-          </motion.div>
+            </Section>
           <Center mb={6}>
             <Image src={giphy} />
           </Center>
