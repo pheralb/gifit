@@ -1,22 +1,25 @@
 {
-    "cleanUrls": true,
-    "trailingSlash": false,
-    "redirects": [
-      {
-        "source": "/g",
-        "destination": "https://github.com/pheralb/gifit"
-      },
-      {
-        "source": "/github",
-        "destination": "https://github.com/pheralb/notart"
-      },
-      {
-        "source": "/tw",
-        "destination": "https://twitter.com/pheralb_"
-      },
-      {
-        "source": "/twitter",
-        "destination": "https://twitter.com/pheralb_"
-      }
-    ]
-  }
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "rewrites": [{
+    "source": "(.*)",
+    "destination": "/index.html"
+  }],
+  "redirects": [{
+      "source": "/g",
+      "destination": "https://github.com/pheralb/gifit"
+    },
+    {
+      "source": "/github",
+      "destination": "https://github.com/pheralb/notart"
+    },
+    {
+      "source": "/tw",
+      "destination": "https://twitter.com/pheralb_"
+    },
+    {
+      "source": "/twitter",
+      "destination": "https://twitter.com/pheralb_"
+    }
+  ]
+}
