@@ -15,13 +15,12 @@ import {
   Button,
   useDisclosure,
   Select,
-  chakra,
   useColorModeValue,
-  useToast,
-  Tooltip
+  Tooltip,
 } from "@chakra-ui/react";
 import { MagnifyingGlass, Gear, ArrowSquareDown, Check } from "phosphor-react";
 import Info from "./info";
+import toast from "react-hot-toast";
 
 const RATINGS = ["g", "pg", "pg-13", "r"];
 
@@ -30,7 +29,6 @@ export default function SearchForm({
   initialRating = RATINGS[0],
 }) {
   const [_, pushLocation] = useLocation();
-  const toast = useToast();
   const { keyword, rating, changeKeyword, changeRating } = useForm({
     initialKeyword,
     initialRating,
@@ -54,11 +52,13 @@ export default function SearchForm({
 
   const handleChangeRating = (evt) => {
     changeRating({ rating: evt.target.value });
-    toast({
-      title: "You have changed the rating filter",
-      status: "warning",
-      duration: 4000,
-      isClosable: true,
+    toast("The search filter has been changed", {
+      icon: "🔍",
+      style: {
+        borderRadius: "10px",
+        background: "#151515",
+        color: "#fff",
+      },
     });
   };
 
@@ -83,23 +83,17 @@ export default function SearchForm({
             borderColor={color}
           />
           <Tooltip label="Search settings" hasArrow aria-label="A tooltip">
-          <InputRightElement width="3.5rem">
-            <Button
-              variant="ghost"
-              onClick={onOpen}
-              size="sm"
-            >
-              <Gear size="20"/>
+            <InputRightElement width="3.5rem">
+              <Button variant="ghost" onClick={onOpen} size="sm">
+                <Gear size="20" />
               </Button>
-          </InputRightElement>
+            </InputRightElement>
           </Tooltip>
         </InputGroup>
-        <Modal isOpen={isOpen} onClose={onClose} size="xl">
+        <Modal isOpen={isOpen} onClose={onClose} size="xl" isCentered>
           <ModalOverlay />
           <ModalContent bg={bg} border="1px" borderColor="gray.600">
-            <ModalHeader>
-              Search filter:
-            </ModalHeader>
+            <ModalHeader>Search filter:</ModalHeader>
             <ModalCloseButton />
             <ModalBody mt="3" mb="4">
               <Select

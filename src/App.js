@@ -3,16 +3,12 @@ import { Switch, Route, useLocation } from "wouter";
 import "App.scss";
 
 import Search from "pages/Search";
-
 import Details from "pages/Details/index";
 import ErrorPage from "pages/404/index";
 
-import Header from "components/Global/Header";
-import Footer from "components/Global/Footer";
-import TrendingSearches from "components/Trending";
-import Spinner from "components/Spinner/loader";
-
+import { Header, Footer, Loader } from "components";
 import { GifsContextProvider } from "context/GifsContext";
+import { Toaster } from "react-hot-toast";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -29,9 +25,8 @@ const Home = React.lazy(() => import("pages/Home/"));
 function App() {
   return (
     <>
-      <Suspense fallback={<Spinner />}>
+      <Suspense fallback={<Loader />}>
         <Header />
-        <TrendingSearches />
         <GifsContextProvider>
           <ScrollToTop />
           <Switch>
@@ -43,6 +38,7 @@ function App() {
           </Switch>
         </GifsContextProvider>
         <Footer />
+        <Toaster position="bottom-center" reverseOrder={false} />
       </Suspense>
     </>
   );

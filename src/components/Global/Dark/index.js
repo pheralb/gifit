@@ -3,24 +3,25 @@ import {
   useColorMode,
   useColorModeValue,
   Button,
-  useToast,
   IconButton,
 } from "@chakra-ui/react";
 import { Sun, Moon } from "phosphor-react";
 import { AnimatePresence, motion } from "framer-motion";
+import toast from "react-hot-toast";
 
 const Dark = () => {
   const { colorMode, toggleColorMode } = useColorMode();
   const iconChange = useColorModeValue(<Moon size="25" />, <Sun size="25" />);
   const keyChange = useColorModeValue("light", "dark");
-  const toast = useToast();
 
   function toggleTheme() {
-    toast({
-      title: "Theme changed",
-      status: "info",
-      duration: 2000,
-      isClosable: true,
+    toast("Theme changed", {
+      icon: "🎨",
+      style: {
+        borderRadius: "10px",
+        background: "#151515",
+        color: "#fff",
+      },
     });
     toggleColorMode();
   }

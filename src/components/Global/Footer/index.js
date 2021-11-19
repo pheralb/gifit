@@ -12,7 +12,7 @@ import {
   Tooltip,
   useColorModeValue
 } from "@chakra-ui/react";
-import Giphy from "images/giphy";
+import Giphy from "components/Icons/giphy";
 import Midu from "images/midu.ico";
 import { GitFork, TwitterLogo } from "phosphor-react";
 
@@ -53,7 +53,7 @@ const Footer = () => {
                   icon={<TwitterLogo size="25" />}
                 />
               </Tooltip>
-              <Tooltip label="midudev" hasArrow>
+              <Tooltip label="midudev 💙" hasArrow>
                 <IconButton
                   as="a"
                   href="https://midu.dev/"
@@ -64,7 +64,7 @@ const Footer = () => {
             </ButtonGroup>
           </Stack>
           <Stack direction="row" align="center" justify="space-between" pt={5} borderTop="1px" borderColor={color}>
-            <Text fontSize="md">&copy; Created by Pablo</Text>
+            <Text fontSize="md">&copy; Created by Pablo.</Text>
             <Button
               as={Link}
               bg="transparent"

@@ -9,6 +9,8 @@ import { chakra, Box, Flex, Button, useToast } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { Copy } from "phosphor-react";
 import confetti from "canvas-confetti";
+import Sidebar from "components/Global/Sidebar";
+import Section from "components/Global/Section";
 
 export default function Detail({ params }) {
   const { gif, isLoading, isError } = useSingleGif({ id: params.id });
@@ -62,21 +64,14 @@ export default function Detail({ params }) {
       <Helmet>
         <title>{title} | Gifit</title>
       </Helmet>
-      <motion.main
-        variants={variants} // Pass the variant object into Framer Motion
-        initial="hidden" // Set the initial state to variants.hidden
-        animate="enter" // Animated state to variants.enter
-        exit="exit" // Exit state (used later) to variants.exit
-        transition={{ type: "linear" }} // Set the transition to linear
-      >
+      <Sidebar>
         <Flex
           p={{ base: "3", md: "5", lg: "50" }}
           w="full"
-          
           alignItems="center"
           justifyContent="center"
         >
-          <Box display={{ lg: "flex" }} maxW={{ lg: "5xl" }}>
+          <Box display={{ lg: "flex" }}>
             <Box w={{ lg: "100%" }} mb="3">
               <Gif {...gif} />
             </Box>
@@ -97,25 +92,27 @@ export default function Detail({ params }) {
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
                 >
-                  <Button
-                    onClick={copy}
-                    colorScheme="teal"
-                    variant="ghost"
-                    border="1px"
-                    px={5}
-                    py={3}
-                    fontWeight="semibold"
-                    rounded="lg"
-                    leftIcon={<Copy />} 
-                  >
-                    Copy
-                  </Button>
+                  <Section>
+                    <Button
+                      onClick={copy}
+                      colorScheme="teal"
+                      variant="ghost"
+                      border="1px"
+                      px={5}
+                      py={3}
+                      fontWeight="semibold"
+                      rounded="lg"
+                      leftIcon={<Copy />}
+                    >
+                      Copy
+                    </Button>
+                  </Section>
                 </motion.button>
               </Box>
             </Box>
           </Box>
         </Flex>
-      </motion.main>
+      </Sidebar>
     </>
   );
 }

@@ -8,15 +8,15 @@ const theme = extendTheme({
     global: (props) => ({
       body: {
         color: mode("gray.900", "whiteAlpha.900")(props),
-        bg: mode("gray.200", "#151515")(props),
+        bg: mode("white", "#151515")(props),
       },
     }),
   },
   //Fonts:
   fonts: {
-    body: "Gifitfont",
-    heading: "Gifitfont",
-    mono: "Gifitfont",
+    body: "Poppins-Regular",
+    heading: "Poppins-Regular",
+    mono: "Poppins-Regular",
   },
 })
 

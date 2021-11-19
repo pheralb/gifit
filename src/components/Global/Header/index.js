@@ -17,19 +17,20 @@ import {
   CloseButton,
   ScaleFade,
   Text,
-  Image 
+  Image, 
+  Icon
 } from "@chakra-ui/react";
 import { List, GithubLogo, House } from "phosphor-react";
 import Search from "components/Search";
 import Dark from "components/Global/Dark";
 import { motion } from "framer-motion";
+import Gifit from "components/Icons/gifit";
 /*-----------------------------------------------*/
 /* Links: */
 const HEADER_LINKS = [
   {
     href: "/",
-    literal: "Home",
-    icon: <House size="25" />,
+    literal: "Home"
   },
 ];
 /*-----------------------------------------------*/
@@ -42,7 +43,7 @@ const NavLink = ({ href, literal, icon }) => {
         textDecoration: "none",
       }}
     >
-      <Button variant="ghost" leftIcon={icon}>
+      <Button variant="ghost" leftIcon={icon} fontWeight="light">
         {literal}
       </Button>
     </Link>
@@ -50,7 +51,8 @@ const NavLink = ({ href, literal, icon }) => {
 };
 /*-----------------------------------------------*/
 const Header = () => {
-  const bg = useColorModeValue("gray.200", "#151515");
+  const bg = useColorModeValue("white", "#151515");
+  const border = useColorModeValue("gray.200", "gray.700");
   const color = useColorModeValue("dark", "gray.400");
   const mobileNav = useDisclosure();
 
@@ -62,19 +64,20 @@ const Header = () => {
         py={3}
         pos="sticky"
         top="0"
-        zIndex="1000"
+        zIndex="1500"
         bg={bg}
+        borderBottom="1px"
+        borderColor={border}
       >
         <Flex alignItems="center" justifyContent="space-between" mx="auto">
           <Flex>
             <motion.button
-              whileHover={{
-                scale: 1.2
-              }}
+              whileTap={{ scale: 0.9 }}
             >
               <Link href="/">
                 <chakra.a title="Gifii" display="flex" alignItems="center">
-                  <Text fontSize="3xl">Gifit</Text>
+                  <Icon as={Gifit} boxSize={8} size="lg" mr="2"/>
+                  <Text fontSize="2xl">gifit</Text>
                   <VisuallyHidden>GIFIT</VisuallyHidden>
                 </chakra.a>
               </Link>
@@ -87,12 +90,12 @@ const Header = () => {
               color="brand.500"
               display={{ base: "none", md: "inline-flex" }}
             >
-              <Box mr="3">
-                <Search />
-              </Box>
               {HEADER_LINKS.map((link) => (
                 <NavLink key={link.href} {...link} />
               ))}
+              <Box mr="0">
+                <Search />
+              </Box>
               <Dark />
             </HStack>
             <ScaleFade initialScale={0.9} in={mobileNav.onOpen}>

@@ -1,8 +1,6 @@
-$colors: #6972ff, #ff30e3, #fffa96, #30e0ff;
-
 @font-face {
-  font-family: "Gifitfont";
-  src: url("/themes/fonts/BeVietnamPro-SemiBold.ttf");
+  font-family: "Poppins-Regular";
+  src: url("./fonts/Poppins-Regular.ttf");
   font-style: normal;
   font-weight: 400;
   font-display: swap;
@@ -12,11 +10,6 @@ $colors: #6972ff, #ff30e3, #fffa96, #30e0ff;
 ::-webkit-scrollbar {
   width: 9px;
   height: 6px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-  background: #0c0c0c;
 }
 
 /* Handle */

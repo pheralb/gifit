@@ -1,25 +1,36 @@
-import React, { useRef } from "react";
+import React, { useCallback, useEffect } from "react";
 import Spinner from "components/Spinner/loader";
 import ListOfGifs from "components/Gifapp/ListOfGifs";
 import { useGifs } from "hooks/useGifs";
+import useNearScreen from "hooks/useNearScreen";
+import debounce from "just-debounce-it";
 import { Helmet } from "react-helmet";
-import {
-  Box,
-  Text,
-  Center,
-  Link,
-  Button,
-} from "@chakra-ui/react";
+import { Box, Text, Center, Link, Button } from "@chakra-ui/react";
 import { ArrowDown } from "phosphor-react";
+import Sidebar from "components/Global/Sidebar";
+import Section from "components/Global/Section";
 
 export default function Search({ params }) {
-  const { keyword, rating } = params;
-  const { loading, gifs, setPage } = useGifs({ keyword, rating });
+  const { keyword } = params;
 
-  const externalRef = useRef();
-  const title = gifs ? `${keyword}` : "";
+  const { gifs, loading, setPage } = useGifs({ keyword });
 
-  const handleNextPage = () => setPage((prevPage) => prevPage + 1);
+  const { isNearScreen, fromRef } = useNearScreen({ observeOnce: false });
+
+  const title = gifs ? decodeURI(keyword) : "";
+
+  const debounceHandleNextPage = useCallback(
+    () =>
+      debounce(
+        setPage((prevPage) => prevPage + 1),
+        100
+      ),
+    [setPage]
+  );
+
+  useEffect(() => {
+    if (isNearScreen) debounceHandleNextPage();
+  }, [isNearScreen, debounceHandleNextPage]);
 
   return (
     <>
@@ -30,33 +41,23 @@ export default function Search({ params }) {
           <Helmet>
             <title>{title} | Gifit</title>
             <meta name="description" content={title} />
-            <meta name="rating" content={rating} />
           </Helmet>
-          <Center bg="gray.800" width="100%" p={4} color="white">
-            <Text fontSize="4xl" data-aos="fade-right" data-aos-duration="300">
-              {decodeURI(keyword)}
-            </Text>
-          </Center>
-          <ListOfGifs gifs={gifs} />
-          <Box width="100%" p={4} mt={5}>
-            <Center>
+          <Sidebar>
+            <Section>
               <Text
-                fontSize="4xl"
+                fontSize="5xl"
                 data-aos="fade-right"
                 data-aos-duration="300"
-                mb="4"
+                ml="5"
               >
-                More gifs?
+                {decodeURI(keyword)}
               </Text>
-            </Center>
-            <Center>
-              <Link onClick={handleNextPage}>
-                <Button colorScheme="teal" size="lg" leftIcon={<ArrowDown />}>
-                    load more gifs
-                </Button>
-              </Link>
-            </Center>
-          </Box>
+            </Section>
+            <Section delay="0.2">
+              <ListOfGifs gifs={gifs} />
+            </Section>
+            <div id="viewer" ref={fromRef}></div>
+          </Sidebar>
         </>
       )}
     </>
