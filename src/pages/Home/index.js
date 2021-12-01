@@ -77,8 +77,9 @@ const Home = ({ initialKeyword = "", initialRating = RATINGS[0] }) => {
             <form id="text" onSubmit={handleSubmit}>
               <InputGroup>
                 <InputRightElement
-                  pointerEvents="none"
-                  children={<MagnifyingGlass size="25" />}
+                  mt="3px"
+                  mr="2px"
+                  children={<MagnifyingGlass size="23"/>}
                 />
                 <Input
                   type="text"

@@ -78,7 +78,7 @@ export default function SearchForm({
           <Input
             variant="filled"
             type="text"
-            placeholder="Type a gif here :)"
+            placeholder="Happy Holidays!"
             onChange={handleChange}
             borderColor={color}
           />

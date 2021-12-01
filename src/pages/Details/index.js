@@ -5,7 +5,8 @@ import useSingleGif from "hooks/useSingleGif";
 import Spinner from "components/Spinner";
 import { useGifs } from "hooks/useGifs";
 import { Helmet } from "react-helmet";
-import { chakra, Box, Flex, Button, useToast } from "@chakra-ui/react";
+import { chakra, Box, Flex, Button } from "@chakra-ui/react";
+import toast from "react-hot-toast";
 import { motion } from "framer-motion";
 import { Copy } from "phosphor-react";
 import confetti from "canvas-confetti";
@@ -17,7 +18,6 @@ export default function Detail({ params }) {
   const [copied, setCopied] = useState(false);
   const { gifs } = useGifs();
   const title = gif ? gif.title : "";
-  const toast = useToast();
 
   if (isLoading) {
     return (
@@ -47,11 +47,13 @@ export default function Detail({ params }) {
     document.execCommand("copy");
     document.body.removeChild(el);
     setCopied(true);
-    toast({
-      title: "Copied!",
-      status: "success",
-      duration: 3000,
-      isClosable: true,
+    toast("Copied to clipboard", {
+      icon: "✨",
+      style: {
+        borderRadius: "10px",
+        background: "#151515",
+        color: "#fff",
+      },
     });
     confetti({
       particleCount: 50,

@@ -4,7 +4,7 @@ import { Flex, Tabs, TabList, Tab, useColorModeValue } from "@chakra-ui/react";
 
 export default function Category({ options = [] }) {
   const bg = useColorModeValue("white", "#151515");
-  const color = useColorModeValue("blue.300", "gray.600");
+  const color = useColorModeValue("blue.100", "gray.600");
 
   return (
     <>

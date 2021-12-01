@@ -17,20 +17,21 @@ import {
   CloseButton,
   ScaleFade,
   Text,
-  Image, 
-  Icon
+  Image,
+  Icon,
 } from "@chakra-ui/react";
 import { List, GithubLogo, House } from "phosphor-react";
 import Search from "components/Search";
 import Dark from "components/Global/Dark";
 import { motion } from "framer-motion";
 import Gifit from "components/Icons/gifit";
+// import Christmas from "../../../img/christmas.png";
 /*-----------------------------------------------*/
 /* Links: */
 const HEADER_LINKS = [
   {
     href: "/",
-    literal: "Home"
+    literal: "Home",
   },
 ];
 /*-----------------------------------------------*/
@@ -71,14 +72,19 @@ const Header = () => {
       >
         <Flex alignItems="center" justifyContent="space-between" mx="auto">
           <Flex>
-            <motion.button
-              whileTap={{ scale: 0.9 }}
-            >
+            <motion.button whileTap={{ scale: 0.9 }}>
               <Link href="/">
                 <chakra.a title="Gifii" display="flex" alignItems="center">
-                  <Icon as={Gifit} boxSize={8} size="lg" mr="2"/>
+                  <Icon as={Gifit} boxSize={8} size="lg" mr="2" />
                   <Text fontSize="2xl">gifit</Text>
                   <VisuallyHidden>GIFIT</VisuallyHidden>
+                  <Image
+                    boxSize="30px"
+                    ml="2"
+                    objectFit="cover"
+                    src="img/christmas.png"
+                    alt="Dan Abramov"
+                  />
                 </chakra.a>
               </Link>
             </motion.button>
@@ -143,4 +149,3 @@ const Header = () => {
 };
 
 export default Header;
-
