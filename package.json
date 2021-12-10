@@ -1,12 +1,12 @@
 {
   "name": "gifit",
-  "version": "2.1.1",
+  "version": "2.1.5",
   "private": true,
   "dependencies": {
     "@chakra-ui/react": "^1.7.2",
-    "@emotion/react": "^11.6.0",
+    "@emotion/react": "^11.7.0",
     "@emotion/styled": "^11.6.0",
-    "@testing-library/jest-dom": "^5.15.0",
+    "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
     "canvas-confetti": "^1.4.0",
@@ -19,7 +19,6 @@
     "react-helmet": "^6.1.0",
     "react-hot-toast": "^2.1.1",
     "react-scripts": "4.0.3",
-    "sass": "^1.43.4",
     "web-vitals": "^2.1.2",
     "wouter": "^2.7.5"
   },

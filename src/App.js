@@ -1,6 +1,6 @@
 import React, { useEffect, Suspense } from "react";
 import { Switch, Route, useLocation } from "wouter";
-import "App.scss";
+import "App.css";
 
 import Search from "pages/Search";
 import Details from "pages/Details/index";

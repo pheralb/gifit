@@ -5,7 +5,6 @@ export default function Gif({ title, id, url }) {
     <>
       <Image
         id={id}
-        roundedTop="lg"
         w="100%"
         fit="cover"
         src={url}

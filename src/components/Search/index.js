@@ -78,9 +78,10 @@ export default function SearchForm({
           <Input
             variant="filled"
             type="text"
-            placeholder="Happy Holidays!"
+            placeholder="Search gifs"
             onChange={handleChange}
             borderColor={color}
+            backgroundColor="transparent"
           />
           <Tooltip label="Search settings" hasArrow aria-label="A tooltip">
             <InputRightElement width="3.5rem">

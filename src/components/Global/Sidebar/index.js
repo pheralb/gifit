@@ -18,15 +18,14 @@ import {
 } from "@chakra-ui/react";
 import getTrendingTerms from "services/getTrendingTermsService";
 import { Link } from "wouter";
-import { List, GithubLogo, House, ArrowLeft } from "phosphor-react";
-import Section from "../Section";
+import { TrendingSearches } from "components";
 import { motion } from "framer-motion";
 
 export default function Sidebar({ children }) {
   const [trends, setTrends] = useState([]);
   const border = useColorModeValue("gray.200", "gray.700");
   const color = useColorModeValue("black", "gray.300");
-
+  const sidebar = useDisclosure();
   useEffect(function () {
     const controller = new AbortController();
     getTrendingTerms({ signal: controller.signal })
@@ -38,7 +37,6 @@ export default function Sidebar({ children }) {
 
   const NavItem = (props) => {
     const { icon, children, ...rest } = props;
-
     return (
       <Flex
         align="center"
@@ -88,14 +86,12 @@ export default function Sidebar({ children }) {
         color="gray.600"
         aria-label="Main Navigation"
       >
-        <Link to={"/home"}>
-          <Button colorScheme="teal" leftIcon={<ArrowLeft />} variant="link" fontWeight="light">
-            Back to home
-          </Button>
-        </Link>
-        <Divider mt="3" mb="3" />
         {options.map((singleOption, index) => (
-          <motion.button whileTap={{ scale: 0.9 }} key={index}>
+          <motion.button
+            whileHover={{ scale: 1.04 }}
+            whileTap={{ scale: 1 }}
+            key={index}
+          >
             <Link to={`/search/${singleOption}`}>
               <NavItem key={singleOption}>#{singleOption}</NavItem>
             </Link>
@@ -107,6 +103,16 @@ export default function Sidebar({ children }) {
   return (
     <Box as="section" minH="100vh">
       <SidebarContent options={trends} />
+      <Drawer
+        isOpen={sidebar.isOpen}
+        onClose={sidebar.onClose}
+        placement="left"
+      >
+        <DrawerOverlay />
+        <DrawerContent>
+          <SidebarContent options={trends} />
+        </DrawerContent>
+      </Drawer>
       <Box ml={{ base: 0, md: 60 }} transition=".3s ease">
         <Box as="main" p="4">
           {children}

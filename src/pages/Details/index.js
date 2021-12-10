@@ -5,7 +5,7 @@ import useSingleGif from "hooks/useSingleGif";
 import Spinner from "components/Spinner";
 import { useGifs } from "hooks/useGifs";
 import { Helmet } from "react-helmet";
-import { chakra, Box, Flex, Button } from "@chakra-ui/react";
+import { chakra, Box, Flex, SimpleGrid, Button } from "@chakra-ui/react";
 import toast from "react-hot-toast";
 import { motion } from "framer-motion";
 import { Copy } from "phosphor-react";
@@ -67,53 +67,45 @@ export default function Detail({ params }) {
         <title>{title} | Gifit</title>
       </Helmet>
       <Sidebar>
-        <Flex
-          p={{ base: "3", md: "5", lg: "50" }}
-          w="full"
-          alignItems="center"
-          justifyContent="center"
-        >
-          <Box display={{ lg: "flex" }}>
-            <Box w={{ lg: "100%" }} mb="3">
-              <Gif {...gif} />
-            </Box>
-            <Box
-              py={{ base: "5", md: "12" }}
-              px={6}
-              maxW={{ base: "xl", lg: "5xl" }}
-              w={{ lg: "50%" }}
-            >
-              <chakra.h2
-                fontSize={{ base: "3xl", md: "4xl" }}
-                fontWeight="bold"
-              >
-                {gif.title}
-              </chakra.h2>
-              <Box mt={8}>
-                <motion.button
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                >
-                  <Section>
-                    <Button
-                      onClick={copy}
-                      colorScheme="teal"
-                      variant="ghost"
-                      border="1px"
-                      px={5}
-                      py={3}
-                      fontWeight="semibold"
-                      rounded="lg"
-                      leftIcon={<Copy />}
-                    >
-                      Copy
-                    </Button>
-                  </Section>
-                </motion.button>
-              </Box>
-            </Box>
+        <SimpleGrid columns={{ base: 1, md: 2 }} spacing={0}>
+          <Box>
+            <Gif {...gif} />
           </Box>
-        </Flex>
+          <Flex
+            direction="column"
+            alignItems="start"
+            justifyContent="center"
+            px={{ base: 4, lg: 20 }}
+          >
+            <chakra.h1
+              mt={{ base: 6, lg: 0 }}
+              mb={6}
+              fontSize={{ base: "4xl", md: "4xl", lg: "5xl" }}
+              fontWeight="bold"
+              lineHeight="shorter"
+            >
+              {gif.title}
+            </chakra.h1>
+            <motion.button whileTap={{ scale: 0.9 }}>
+              <Section>
+                <Button
+                  onClick={copy}
+                  colorScheme="teal"
+                  variant="ghost"
+                  border="1px"
+                  px={5}
+                  py={3}
+                  width="full"
+                  fontWeight="light"
+                  rounded="lg"
+                  leftIcon={<Copy />}
+                >
+                  Copy
+                </Button>
+              </Section>
+            </motion.button>
+          </Flex>
+        </SimpleGrid>
       </Sidebar>
     </>
   );

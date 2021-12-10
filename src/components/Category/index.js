@@ -22,6 +22,7 @@ export default function Category({ options = [] }) {
                 <Tab
                   key={singleOption}
                   color="white.900"
+                  _selected={{ bg: 'transparent' }}
                   _focus={{ boxShadow: "none" }}
                   _hover={{ bg: color }}
                   fontSize="md"

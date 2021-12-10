@@ -24,8 +24,7 @@ import { List, GithubLogo, House } from "phosphor-react";
 import Search from "components/Search";
 import Dark from "components/Global/Dark";
 import { motion } from "framer-motion";
-import Gifit from "components/Icons/gifit";
-// import Christmas from "../../../img/christmas.png";
+import Christmas from "components/Icons/christmas";
 /*-----------------------------------------------*/
 /* Links: */
 const HEADER_LINKS = [
@@ -65,7 +64,7 @@ const Header = () => {
         py={3}
         pos="sticky"
         top="0"
-        zIndex="1500"
+        zIndex="1200"
         bg={bg}
         borderBottom="1px"
         borderColor={border}
@@ -74,17 +73,15 @@ const Header = () => {
           <Flex>
             <motion.button whileTap={{ scale: 0.9 }}>
               <Link href="/">
-                <chakra.a title="Gifii" display="flex" alignItems="center">
-                  <Icon as={Gifit} boxSize={8} size="lg" mr="2" />
-                  <Text fontSize="2xl">gifit</Text>
+                <chakra.a
+                  title="Gifit by pheralb"
+                  display="flex"
+                  alignItems="center"
+                  ml="2"
+                >
+                  <Text fontSize="3xl" fontWeight="semibold">gifit</Text>
                   <VisuallyHidden>GIFIT</VisuallyHidden>
-                  <Image
-                    boxSize="30px"
-                    ml="2"
-                    objectFit="cover"
-                    src="img/christmas.png"
-                    alt="Dan Abramov"
-                  />
+                  <Icon as={Christmas} boxSize="10"/>
                 </chakra.a>
               </Link>
             </motion.button>
