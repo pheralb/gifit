@@ -5,7 +5,10 @@ import {
   Box,
   Drawer,
   DrawerContent,
+  DrawerCloseButton,
+  DrawerHeader,
   DrawerOverlay,
+  DrawerBody,
   Flex,
   Icon,
   IconButton,
@@ -81,7 +84,6 @@ export default function Sidebar({ children }) {
     <Box
       as="nav"
       pos="fixed"
-      top="0"
       left="0"
       zIndex="sticky"
       h="full"
@@ -92,7 +94,14 @@ export default function Sidebar({ children }) {
       w="60"
       {...props}
     >
-      <Flex px="4" py="1" mt="4" mb="2" align="center">
+      <Flex
+        display={{ base: "none", md: "flex" }}
+        px="4"
+        py="1"
+        mt="4"
+        mb="2"
+        align="center"
+      >
         <Icon
           bg="transparent"
           aria-label="Giphy"
@@ -116,6 +125,7 @@ export default function Sidebar({ children }) {
         </Hover>
       </Flex>
       <Flex
+        mt={{ base: "6", md: "0" }}
         direction="column"
         as="nav"
         fontSize="sm"
@@ -130,7 +140,7 @@ export default function Sidebar({ children }) {
   );
   return (
     <Box as="section" minH="100vh">
-      <SidebarContent display={{ base: "none", md: "unset" }} />
+      <SidebarContent top="0" display={{ base: "none", md: "unset" }} />
       <Drawer
         isOpen={sidebar.isOpen}
         onClose={sidebar.onClose}
@@ -138,7 +148,17 @@ export default function Sidebar({ children }) {
       >
         <DrawerOverlay />
         <DrawerContent bg={bg}>
-          <SidebarContent w="full" borderRight="none" />
+          <DrawerCloseButton size="30" mr="3" mt="3" color="white" />
+          <DrawerHeader
+            bgGradient="linear(to-l, #7928CA, #FF0080)"
+            color="white"
+            fontWeight="light"
+          >
+            Trending
+          </DrawerHeader>
+          <DrawerBody>
+            <SidebarContent top="10" w="full" borderRight="none" />
+          </DrawerBody>
         </DrawerContent>
       </Drawer>
       <Box ml={{ base: 0, md: 60 }} transition=".3s ease">
@@ -157,7 +177,7 @@ export default function Sidebar({ children }) {
         >
           <Button
             p="2"
-            variant='ghost'
+            variant="ghost"
             bg="transparent"
             aria-label="Menu"
             display={{ base: "inline-flex", md: "none" }}
