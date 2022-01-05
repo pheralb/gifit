@@ -6,10 +6,11 @@ export default function ListOfGifs({ gifs }) {
   return (
     <>
       <SimpleGrid 
-        minChildWidth={[300, 400, 350]} 
+        minChildWidth={{base: "100%", md:"350px"}}
         columns={4} 
         spacing={5} 
-        pt={5}>
+        pt={5}
+        pb="2">
         {gifs.map(({ id, title, url }) => (
           <Gif key={id} title={title} url={url} id={id} />
         ))}

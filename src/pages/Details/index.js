@@ -66,7 +66,6 @@ export default function Detail({ params }) {
       <Helmet>
         <title>{title} | Gifit</title>
       </Helmet>
-      <Sidebar>
         <SimpleGrid columns={{ base: 1, md: 2 }} spacing={0}>
           <Box>
             <Gif {...gif} />
@@ -106,7 +105,6 @@ export default function Detail({ params }) {
             </motion.button>
           </Flex>
         </SimpleGrid>
-      </Sidebar>
     </>
   );
 }

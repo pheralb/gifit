@@ -28,7 +28,7 @@ export default function useForm({
 } = {}) {
   const [{ keyword, rating }, dispatch] = useReducer(reducer, {
     keyword: decodeURIComponent(initialKeyword),
-    rating: initialRating
+    rating: initialRating,
   });
 
   return {
@@ -37,6 +37,6 @@ export default function useForm({
     changeRating: ({ rating }) =>
       dispatch({ type: ACTIONS.CHANGE_RATING, payload: rating }),
     keyword,
-    rating
+    rating,
   };
 }

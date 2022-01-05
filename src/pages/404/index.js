@@ -22,7 +22,7 @@ const index = () => {
           </Text>
           <Text>Ups, page not found</Text>
           <Link to="/home">
-            <Button colorScheme="teal" variant="outline" mt="4">
+            <Button colorScheme="teal" variant="outline" mt="4" fontWeight="light">
               Go Home
             </Button>
           </Link>

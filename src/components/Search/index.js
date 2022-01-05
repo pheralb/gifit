@@ -1,6 +1,6 @@
 import React from "react";
 import { useLocation } from "wouter";
-import useForm from "../../hooks/searchHook";
+import useForm from "hooks/searchHook";
 import {
   Input,
   InputLeftElement,
@@ -18,7 +18,7 @@ import {
   useColorModeValue,
   Tooltip,
 } from "@chakra-ui/react";
-import { MagnifyingGlass, Gear, ArrowSquareDown, Check } from "phosphor-react";
+import { MagnifyingGlass, Gear, ArrowSquareDown } from "phosphor-react";
 import Info from "./info";
 import toast from "react-hot-toast";
 
@@ -63,17 +63,15 @@ export default function SearchForm({
   };
 
   const { isOpen, onOpen, onClose, onToggle } = useDisclosure();
-
   const bg = useColorModeValue("gray.200", "#151515");
   const color = useColorModeValue("gray.400", "gray.600");
-
   return (
     <>
       <form onSubmit={handleSubmit}>
         <InputGroup>
           <InputLeftElement
             pointerEvents="none"
-            children={<MagnifyingGlass size={24} />}
+            children={<MagnifyingGlass size={18} />}
           />
           <Input
             variant="filled"
@@ -83,18 +81,23 @@ export default function SearchForm({
             borderColor={color}
             backgroundColor="transparent"
           />
-          <Tooltip label="Search settings" hasArrow aria-label="A tooltip">
-            <InputRightElement width="3.5rem">
+          <Tooltip label="Filter" hasArrow aria-label="Filter tooltip">
+            <InputRightElement width="3rem">
               <Button variant="ghost" onClick={onOpen} size="sm">
-                <Gear size="20" />
+                <Gear size="16" />
               </Button>
             </InputRightElement>
           </Tooltip>
         </InputGroup>
-        <Modal isOpen={isOpen} onClose={onClose} size="xl" isCentered>
+        <Modal
+          isOpen={isOpen}
+          onClose={onClose}
+          size="xl"
+          motionPreset="slideInBottom"
+        >
           <ModalOverlay />
           <ModalContent bg={bg} border="1px" borderColor="gray.600">
-            <ModalHeader>Search filter:</ModalHeader>
+            <ModalHeader fontWeight="light">Search filter:</ModalHeader>
             <ModalCloseButton />
             <ModalBody mt="3" mb="4">
               <Select

@@ -1,10 +1,5 @@
 import React from "react";
-import {
-  useColorMode,
-  useColorModeValue,
-  Button,
-  IconButton,
-} from "@chakra-ui/react";
+import { useColorMode, useColorModeValue, IconButton } from "@chakra-ui/react";
 import { Sun, Moon } from "phosphor-react";
 import { AnimatePresence, motion } from "framer-motion";
 import toast from "react-hot-toast";
@@ -37,6 +32,7 @@ const Dark = () => {
         transition={{ duration: 0.2 }}
       >
         <IconButton
+          ml="2"
           aria-label="Toggle theme"
           bg="transparent"
           border="0"

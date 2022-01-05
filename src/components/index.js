@@ -9,8 +9,6 @@ export { default as SingleGif } from './Gifapp/singleGif';
 
 //Global:
 export { default as DarkMode } from './Global/Dark';
-export { default as Header } from './Global/Header';
-export { default as Footer } from './Global/Footer';
 export { default as Section } from './Global/Section';
 export { default as Sidebar } from './Global/Sidebar';
 

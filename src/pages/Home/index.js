@@ -1,30 +1,26 @@
 import React from "react";
 import {
-  Container,
-  Stack,
   chakra,
   Box,
   useColorModeValue,
   Text,
-  Button,
-  Image,
-  FormControl,
   InputGroup,
   InputRightElement,
-  FormHelperText,
   Input,
+  HStack,
 } from "@chakra-ui/react";
 import { Helmet } from "react-helmet";
-import { MagnifyingGlass } from "phosphor-react";
+import { MagnifyingGlass, Sticker, TrendUp } from "phosphor-react";
 import { useLocation } from "wouter";
-import { TrendingSearches, Section, ListOfTrending } from "components";
+import { Section, ListOfTrending } from "components";
 import useForm from "hooks/searchHook";
-
+import ListOfStickers from "components/Gifapp/ListOfStickers";
 const RATINGS = ["g", "pg", "pg-13", "r"];
 
 const Home = ({ initialKeyword = "", initialRating = RATINGS[0] }) => {
   const [_, pushLocation] = useLocation();
   const border = useColorModeValue("gray.200", "gray.700");
+  const bg = useColorModeValue("#E8E8E8", "#151515");
 
   const { keyword, rating, changeKeyword, changeRating } = useForm({
     initialKeyword,
@@ -51,20 +47,21 @@ const Home = ({ initialKeyword = "", initialRating = RATINGS[0] }) => {
       <Helmet>
         <title>Gifit</title>
       </Helmet>
-      <TrendingSearches />
-      <Box px={4} py={20} mx="auto" borderBottom="1px" borderColor={border}>
+      <Box mx="auto" borderColor={border}>
         <Box
+          mt={{ base: "4", md: "8" }}
           w={{ base: "full", md: 11 / 12, xl: 8 / 12 }}
           textAlign={{ base: "left", md: "center" }}
           mx="auto"
         >
           <chakra.h1
-            mb={10}
-            fontSize={{ base: "4xl", md: "5xl" }}
-            fontWeight={{ base: "bold", md: "extrabold" }}
-            lineHeight="shorter"
+            bgGradient='linear(to-l, #7928CA, #FF0080)'
+            bgClip='text'
+            fontSize={{ base: "3xl", md: "6xl" }}
+            fontWeight='extrabold'
+            mb={{ base: "3", md: "4" }}
           >
-            Start with amazing gifs
+            Discover amazing gifs
           </chakra.h1>
           <Box
             w={{ base: "full", md: 7 / 12 }}
@@ -79,7 +76,7 @@ const Home = ({ initialKeyword = "", initialRating = RATINGS[0] }) => {
                 <InputRightElement
                   mt="3px"
                   mr="2px"
-                  children={<MagnifyingGlass size="23"/>}
+                  children={<MagnifyingGlass size="23" />}
                 />
                 <Input
                   type="text"
@@ -97,12 +94,28 @@ const Home = ({ initialKeyword = "", initialRating = RATINGS[0] }) => {
       </Box>
       <Box p="2" mt="5">
         <Section>
-          <Text ml="5" fontSize="3xl">
-            Trending
-          </Text>
+          <HStack spacing={3}>
+            <TrendUp size="30"/>
+            <Text fontSize="3xl">
+              Trending
+            </Text>
+          </HStack>
         </Section>
         <Section delay="0.4">
-          <ListOfTrending />
+          <ListOfTrending show={8} />
+        </Section>
+      </Box>
+      <Box p="2" mt="5">
+        <Section>
+          <HStack spacing={3}>
+            <Sticker size="30"/>
+            <Text fontSize="3xl">
+              Stickers
+            </Text>
+          </HStack>
+        </Section>
+        <Section delay="0.4">
+          <ListOfStickers show={8} />
         </Section>
       </Box>
     </>

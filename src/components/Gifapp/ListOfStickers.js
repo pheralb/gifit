@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { getTrendingGifs } from "services/getTrendingGifs";
+import { getTrendingStickers } from "services/getTrendingStickers";
 import Gif from "./gifComponent";
 import { SimpleGrid } from "@chakra-ui/react";
 
-export default function ListOfTrending({ show }) {
+export default function ListOfStickers({ show }) {
   const [trends, setTrends] = useState([]);
 
   useEffect(function () {
     const controller = new AbortController();
-    getTrendingGifs({ limit: show })
+    getTrendingStickers({ limit: show })
       .then(setTrends)
       .catch((err) => {});
 
@@ -18,9 +18,9 @@ export default function ListOfTrending({ show }) {
   return (
     <>
       <SimpleGrid
-        minChildWidth={{base: "100%", md:"350px"}}
+        minChildWidth={[300, 400, 350]}
         columns={4}
-        spacing={4}
+        spacing={5}
         pt={3}
       >
         {trends.map(({ id, title }) => (

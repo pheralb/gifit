@@ -9,6 +9,7 @@ const theme = extendTheme({
       body: {
         color: mode("gray.900", "whiteAlpha.900")(props),
         bg: mode("white", "#151515")(props),
+        fontWeight: "light",
       },
     }),
   },
