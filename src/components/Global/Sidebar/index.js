@@ -95,10 +95,9 @@ export default function Sidebar({ children }) {
       {...props}
     >
       <Flex
-        display={{ base: "none", md: "flex" }}
         px="4"
         py="1"
-        mt="4"
+        mt={{ base: "0", md: "4" }}
         mb="2"
         align="center"
       >
@@ -125,7 +124,6 @@ export default function Sidebar({ children }) {
         </Hover>
       </Flex>
       <Flex
-        mt={{ base: "6", md: "0" }}
         direction="column"
         as="nav"
         fontSize="sm"
@@ -149,14 +147,7 @@ export default function Sidebar({ children }) {
         <DrawerOverlay />
         <DrawerContent bg={bg}>
           <DrawerCloseButton size="30" mr="3" mt="3" color="white" />
-          <DrawerHeader
-            bgGradient="linear(to-l, #7928CA, #FF0080)"
-            color="white"
-            fontWeight="light"
-          >
-            Trending
-          </DrawerHeader>
-          <DrawerBody>
+          <DrawerBody overflow="hidden">
             <SidebarContent top="10" w="full" borderRight="none" />
           </DrawerBody>
         </DrawerContent>
