@@ -1,46 +1,44 @@
 import React from "react";
-import { Link } from "wouter";
+import { Link } from "react-router-dom";
 import {
-  Flex,
   Tabs,
   TabList,
   Tab,
   useColorModeValue,
+  HStack,
 } from "@chakra-ui/react";
+import Click from "animations/click";
 
 export default function Category({ options = [] }) {
-  const bg = useColorModeValue("white", "#151515");
-  const color = useColorModeValue("blue.100", "gray.600");
+  const border = useColorModeValue("dark.300", "dark.700");
+  const color = useColorModeValue("dark.200", "dark.800");
   return (
     <>
-      <Flex
-        alignItems="center"
-        justifyContent="space-between"
-        maxW="100%"
-        overflowX="auto"
-        bg={bg}
-      >
-          <Tabs>
-            <TabList>
-              {options.map((singleOption, index) => (
-                <Link to={`/search/${singleOption}`} index={index}>
-                  <Tab
-                    key={singleOption}
-                    color="white.900"
-                    _selected={{ bg: "transparent" }}
-                    _focus={{ boxShadow: "none" }}
-                    _hover={{ bg: color }}
-                    fontSize="md"
-                    h="60px"
-                    isTruncated
-                  >
-                    #{singleOption}
-                  </Tab>
-                </Link>
-              ))}
-            </TabList>
-          </Tabs>
-      </Flex>
+      <HStack w="100%" overflowX="auto">
+        <Tabs>
+          <TabList>
+            {options.map((singleOption, index) => (
+              <Link to={`/search/${singleOption}`}>
+                <Tab
+                  key={singleOption}
+                  _selected={{ bg: "transparent" }}
+                  _focus={{ boxShadow: "none" }}
+                  _hover={{ bg: color }}
+                  fontSize="md"
+                  mb="3"
+                  borderWidth="1px"
+                  borderColor={border}
+                  borderRadius="15px"
+                  mr="2"
+                  isTruncated
+                >
+                  <Click>#{singleOption}</Click>
+                </Tab>
+              </Link>
+            ))}
+          </TabList>
+        </Tabs>
+      </HStack>
     </>
   );
 }

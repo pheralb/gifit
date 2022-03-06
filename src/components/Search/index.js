@@ -1,43 +1,23 @@
 import React from "react";
-import { useLocation } from "wouter";
+import { useNavigate } from "react-router-dom";
 import useForm from "hooks/searchHook";
 import {
   Input,
   InputLeftElement,
   InputGroup,
-  InputRightElement,
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalBody,
-  ModalCloseButton,
-  Button,
-  useDisclosure,
-  Select,
   useColorModeValue,
-  Tooltip,
 } from "@chakra-ui/react";
-import { MagnifyingGlass, Gear, ArrowSquareDown } from "phosphor-react";
-import Info from "./info";
-import toast from "react-hot-toast";
+import { IoSearch } from "react-icons/io5";
 
-const RATINGS = ["g", "pg", "pg-13", "r"];
-
-export default function SearchForm({
-  initialKeyword = "",
-  initialRating = RATINGS[0],
-}) {
-  const [_, pushLocation] = useLocation();
-  const { keyword, rating, changeKeyword, changeRating } = useForm({
+export default function SearchForm({ initialKeyword = "" }) {
+  const navigate = useNavigate();
+  const { keyword, changeKeyword } = useForm({
     initialKeyword,
-    initialRating,
   });
 
   const onSubmit = ({ keyword }) => {
     if (keyword !== "") {
-      // navegar a otra ruta
-      pushLocation(`/search/${keyword}/${rating}`);
+      navigate(`/search/${keyword}`);
     }
   };
 
@@ -50,71 +30,25 @@ export default function SearchForm({
     onSubmit({ keyword });
   };
 
-  const handleChangeRating = (evt) => {
-    changeRating({ rating: evt.target.value });
-    toast("The search filter has been changed", {
-      icon: "🔍",
-      style: {
-        borderRadius: "10px",
-        background: "#151515",
-        color: "#fff",
-      },
-    });
-  };
+  const border = useColorModeValue("dark.300", "dark.700");
 
-  const { isOpen, onOpen, onClose, onToggle } = useDisclosure();
-  const bg = useColorModeValue("gray.200", "#151515");
-  const color = useColorModeValue("gray.400", "gray.600");
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <InputGroup>
+        <InputGroup borderColor={border} borderWidth="1px" borderRadius="10px">
           <InputLeftElement
             pointerEvents="none"
-            children={<MagnifyingGlass size={18} />}
+            children={<IoSearch size="22" />}
           />
           <Input
             variant="filled"
             type="text"
-            placeholder="Search gifs"
+            placeholder="Search gifs..."
             onChange={handleChange}
-            borderColor={color}
             backgroundColor="transparent"
+            autofocus="true"
           />
-          <Tooltip label="Filter" hasArrow aria-label="Filter tooltip">
-            <InputRightElement width="3rem">
-              <Button variant="ghost" onClick={onOpen} size="sm">
-                <Gear size="16" />
-              </Button>
-            </InputRightElement>
-          </Tooltip>
         </InputGroup>
-        <Modal
-          isOpen={isOpen}
-          onClose={onClose}
-          size="xl"
-          motionPreset="slideInBottom"
-        >
-          <ModalOverlay />
-          <ModalContent bg={bg} border="1px" borderColor="gray.600">
-            <ModalHeader fontWeight="light">Search filter:</ModalHeader>
-            <ModalCloseButton />
-            <ModalBody mt="3" mb="4">
-              <Select
-                value={rating}
-                onChange={handleChangeRating}
-                mb="2"
-                borderColor={color}
-                icon={<ArrowSquareDown />}
-              >
-                {RATINGS.map((rating) => (
-                  <option key={rating}>{rating}</option>
-                ))}
-              </Select>
-              <Info />
-            </ModalBody>
-          </ModalContent>
-        </Modal>
       </form>
     </>
   );

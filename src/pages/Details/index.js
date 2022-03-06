@@ -1,22 +1,21 @@
 import React, { useState } from "react";
-import { Redirect } from "wouter";
+import { useNavigate, useParams } from "react-router-dom";
 import Gif from "components/Gifapp/singleGif";
 import useSingleGif from "hooks/useSingleGif";
 import Spinner from "components/Spinner";
-import { useGifs } from "hooks/useGifs";
 import { Helmet } from "react-helmet";
 import { chakra, Box, Flex, SimpleGrid, Button } from "@chakra-ui/react";
 import toast from "react-hot-toast";
 import { motion } from "framer-motion";
-import { Copy } from "phosphor-react";
+import { IoCopyOutline } from "react-icons/io5";
 import confetti from "canvas-confetti";
-import Sidebar from "components/Global/Sidebar";
 import Section from "components/Global/Section";
 
-export default function Detail({ params }) {
+export default function Detail() {
+  let params = useParams();
   const { gif, isLoading, isError } = useSingleGif({ id: params.id });
   const [copied, setCopied] = useState(false);
-  const { gifs } = useGifs();
+  const navigate = useNavigate();
   const title = gif ? gif.title : "";
 
   if (isLoading) {
@@ -30,14 +29,8 @@ export default function Detail({ params }) {
     );
   }
 
-  if (isError) return <Redirect to="/404" />;
+  if (isError) return navigate('/404');
   if (!gif) return null;
-
-  const variants = {
-    hidden: { opacity: 0, x: -200, y: 0 },
-    enter: { opacity: 1, x: 0, y: 0 },
-    exit: { opacity: 0, x: 0, y: -100 },
-  };
 
   function copy() {
     const el = document.createElement("input");
@@ -66,7 +59,7 @@ export default function Detail({ params }) {
       <Helmet>
         <title>{title} | Gifit</title>
       </Helmet>
-        <SimpleGrid columns={{ base: 1, md: 2 }} spacing={0}>
+        <SimpleGrid columns={{ base: 1, md: 2 }} mt="4" spacing={0}>
           <Box>
             <Gif {...gif} />
           </Box>
@@ -97,7 +90,7 @@ export default function Detail({ params }) {
                   width="full"
                   fontWeight="light"
                   rounded="lg"
-                  leftIcon={<Copy />}
+                  leftIcon={<IoCopyOutline />}
                 >
                   Copy
                 </Button>

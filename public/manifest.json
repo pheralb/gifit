@@ -1,26 +1,32 @@
 {
-  "short_name": "Gifit",
+  "theme_color": "#16161a",
+  "background_color": "#16161a",
+  "display": "minimal-ui",
+  "scope": "/",
+  "start_url": "/",
   "name": "Gifit",
+  "short_name": "Gifit",
+  "description": "Discover the best gifs, using Giphy API.",
   "icons": [
     {
-      "src": "img/gifit.png",
-      "sizes": "64x64 32x32 24x24 16x16",
+      "src": "/icons/icon-192x192.png",
+      "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "img/gifit.png",
-      "type": "image/png",
-      "sizes": "192x192"
+      "src": "/icons/icon-256x256.png",
+      "sizes": "256x256",
+      "type": "image/png"
     },
     {
-      "src": "img/gifit.png",
-      "type": "image/png",
-      "sizes": "512x512"
+      "src": "/icons/icon-384x384.png",
+      "sizes": "384x384",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
     }
-  ],
-  "start_url": ".",
-  "display": "standalone",
-  "theme_color": "#B800A7",
-  "background_color": "#ffffff"
+  ]
 }
-

@@ -13,7 +13,7 @@ export default function ListOfStickers({ show }) {
       .catch((err) => {});
 
     return () => controller.abort();
-  }, []);
+  }, [show]);
 
   return (
     <>

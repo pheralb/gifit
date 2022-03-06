@@ -1,12 +1,12 @@
 import React from "react";
 import { useColorMode, useColorModeValue, IconButton } from "@chakra-ui/react";
-import { Sun, Moon } from "phosphor-react";
+import { IoMoonOutline, IoSunnyOutline } from "react-icons/io5";
 import { AnimatePresence, motion } from "framer-motion";
 import toast from "react-hot-toast";
 
 const Dark = () => {
-  const { colorMode, toggleColorMode } = useColorMode();
-  const iconChange = useColorModeValue(<Moon size="25" />, <Sun size="25" />);
+  const { toggleColorMode } = useColorMode();
+  const iconChange = useColorModeValue(<IoMoonOutline size="25" />, <IoSunnyOutline size="25" />);
   const keyChange = useColorModeValue("light", "dark");
 
   function toggleTheme() {
@@ -32,7 +32,6 @@ const Dark = () => {
         transition={{ duration: 0.2 }}
       >
         <IconButton
-          ml="2"
           aria-label="Toggle theme"
           bg="transparent"
           border="0"

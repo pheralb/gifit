@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Image, Container, Text, Button } from "@chakra-ui/react";
 import { Helmet } from "react-helmet";
-import { Link } from "wouter";
+import { Link } from "react-router-dom";
 const index = () => {
   return (
     <>
@@ -21,7 +21,7 @@ const index = () => {
             Error 404
           </Text>
           <Text>Ups, page not found</Text>
-          <Link to="/home">
+          <Link to="/">
             <Button colorScheme="teal" variant="outline" mt="4" fontWeight="light">
               Go Home
             </Button>

@@ -1,13 +1,13 @@
 import React from "react";
 import { Box, Image } from "@chakra-ui/react";
-import { Link } from "wouter";
+import { Link } from "react-router-dom";
 import Hover from "animations/hover";
 export default function Gif({ title, id, url }) {
   return (
     <>
       <Hover>
         <Box maxW="100%" rounded="lg" overflow="hidden" mx="auto" cursor="pointer">
-          <Link to={`/gif/${id}`} display="block">
+          <Link to={`/gif/${id}`}>
             <Box maxW={{base: "100%", md: "sm"}} borderWidth="1px" rounded="lg" id={id}>
               <Image
                 w="full"

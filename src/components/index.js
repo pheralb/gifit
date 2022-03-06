@@ -10,7 +10,7 @@ export { default as SingleGif } from './Gifapp/singleGif';
 //Global:
 export { default as DarkMode } from './Global/Dark';
 export { default as Section } from './Global/Section';
-export { default as Sidebar } from './Global/Sidebar';
+export { default as Layout } from './Global/Layout';
 
 //Icons
 export { default as GifitIcon } from './Icons/gifit';

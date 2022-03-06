@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import { motion } from "framer-motion";
 import { Box, Center } from "@chakra-ui/react";
 
@@ -9,9 +9,9 @@ const containerVariants = {
   animate: {
     transition: {
       when: "beforeChildren",
-      staggerChildren: 0.1
-    }
-  }
+      staggerChildren: 0.1,
+    },
+  },
 };
 
 const dotVariants = {
@@ -19,46 +19,46 @@ const dotVariants = {
   animate: {
     height: [40, 100, 40],
     transition: {
-      repeat: Infinity
-    }
-  }
+      repeat: Infinity,
+    },
+  },
 };
 
 const Loader = ({ count = 5 }) => {
   return (
     <>
-    <Box>
-    <Center mt="20" h="100px" color="white">
-    <motion.div
-      variants={containerVariants}
-      initial="initial"
-      animate="animate"
-      style={{
-        display: "flex",
-        gap: 16,
-        height: 100,
-        alignItems: "center"
-      }}
-    >
-      {Array(count)
-        .fill(null)
-        .map((_, index) => {
-          return (
-            <motion.div
-              key={index}
-              variants={dotVariants}
-              style={{
-                height: 20,
-                width: 20,
-                backgroundColor: colors[index % colors.length],
-                borderRadius: 20
-              }}
-            />
-          );
-        })}
-    </motion.div>
-    </Center>
-    </Box>
+      <Box>
+        <Center mt="20" h="100px" color="white">
+          <motion.div
+            variants={containerVariants}
+            initial="initial"
+            animate="animate"
+            style={{
+              display: "flex",
+              gap: 16,
+              height: 100,
+              alignItems: "center",
+            }}
+          >
+            {Array(count)
+              .fill(null)
+              .map((_, index) => {
+                return (
+                  <motion.div
+                    key={index}
+                    variants={dotVariants}
+                    style={{
+                      height: 20,
+                      width: 20,
+                      backgroundColor: colors[index % colors.length],
+                      borderRadius: 20,
+                    }}
+                  />
+                );
+              })}
+          </motion.div>
+        </Center>
+      </Box>
     </>
   );
 };
