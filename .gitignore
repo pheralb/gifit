@@ -8,6 +8,7 @@ package-lock.json
 /coverage
 
 # Production ->
+/dist
 /build
 
 # Misc ->
