@@ -19,9 +19,8 @@ export default function Category({ options = [] }) {
         <Tabs>
           <TabList>
             {options.map((singleOption, index) => (
-              <Link to={`/search/${singleOption}`}>
+              <Link key={singleOption} to={`/search/${singleOption}`}>
                 <Tab
-                  key={singleOption}
                   _selected={{ bg: "transparent" }}
                   _focus={{ boxShadow: "none" }}
                   _hover={{ bg: color }}
@@ -31,9 +30,9 @@ export default function Category({ options = [] }) {
                   borderColor={border}
                   borderRadius="15px"
                   mr="2"
-                  isTruncated
+                  noOfLines={1}
                 >
-                  <Click>#{singleOption}</Click>
+                  #{singleOption}
                 </Tab>
               </Link>
             ))}

@@ -5,6 +5,7 @@ import {
   InputLeftElement,
   InputGroup,
   useColorModeValue,
+  Box,
 } from "@chakra-ui/react";
 import { IoSearch } from "react-icons/io5";
 import useForm from "@/hooks/searchHook";
@@ -33,7 +34,7 @@ export default function SearchForm({ initialKeyword = "" }) {
   const border = useColorModeValue("dark.300", "dark.700");
 
   return (
-    <>
+    <Box mb="4">
       <form onSubmit={handleSubmit}>
         <InputGroup borderColor={border} borderWidth="1px" borderRadius="10px">
           <InputLeftElement
@@ -46,10 +47,10 @@ export default function SearchForm({ initialKeyword = "" }) {
             placeholder="Search gifs..."
             onChange={handleChange}
             backgroundColor="transparent"
-            autofocus="true"
+            autoFocus={true}
           />
         </InputGroup>
       </form>
-    </>
+    </Box>
   );
 }

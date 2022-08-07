@@ -24,18 +24,20 @@ const theme = extendTheme({
       100: "#f9f9f9",
     },
   },
-  //Fonts:
   fonts: {
-    body: "Poppins-Regular",
-    heading: "Poppins-Regular",
-    mono: "Poppins-Regular",
+    body: "Inter-Medium",
+    heading: "Inter-Medium",
   },
   styles: {
     global: (props) => ({
       body: {
         color: mode("gray.900", "whiteAlpha.900")(props),
-        bg: mode("light.100", "lightDark.900")(props),
-        fontWeight: "light",
+        bgGradient: mode(
+          "radial-gradient(circle at 1px 1px, #E7E7E7 1px, light.100 0)",
+          "radial-gradient(circle at 1px 1px, #212121 1px, lightDark.900 0)"
+        )(props),
+        backgroundSize: "40px 40px",
+        fontSize: "14px",
       },
     }),
   },

@@ -1,12 +1,15 @@
 import React from "react";
 import { useColorMode, useColorModeValue, IconButton } from "@chakra-ui/react";
-import { IoMoonOutline, IoSunnyOutline } from "react-icons/io5";
 import { AnimatePresence, motion } from "framer-motion";
 import toast from "react-hot-toast";
+import { BiMoon, BiSun } from "react-icons/bi";
 
 const Dark = () => {
   const { toggleColorMode } = useColorMode();
-  const iconChange = useColorModeValue(<IoMoonOutline size="25" />, <IoSunnyOutline size="25" />);
+  const iconChange = useColorModeValue(
+    <BiMoon size="22" />,
+    <BiSun size="22" />
+  );
   const keyChange = useColorModeValue("light", "dark");
 
   function toggleTheme() {
@@ -34,11 +37,10 @@ const Dark = () => {
         <IconButton
           aria-label="Toggle theme"
           bg="transparent"
-          border="0"
-          variant="outline"
+          variant="ghost"
           icon={iconChange}
           onClick={toggleTheme}
-        ></IconButton>
+        />
       </motion.div>
     </AnimatePresence>
   );
