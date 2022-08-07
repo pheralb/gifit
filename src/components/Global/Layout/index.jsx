@@ -5,7 +5,6 @@ import {
   Flex,
   useColorModeValue,
   HStack,
-  Button,
   useDisclosure,
   VStack,
   IconButton,
@@ -15,14 +14,16 @@ import {
   Text,
   Center,
 } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
+
 import { AiOutlineMenu } from "react-icons/ai";
 import { SiGithub } from "react-icons/si";
-import { HiExternalLink } from "react-icons/hi";
-import { GiphyIcon, Search, Trending } from "components";
-import Dark from "components/Global/Dark";
-import Midu from "images/midu.ico";
-import { Link } from "react-router-dom";
-import Hover from "animations/hover";
+
+import Dark from "@/components/Global/Dark";
+import { GiphyIcon, Search, Trending } from "@/components";
+import Hover from "@/animations/hover";
+
+import Midu from "@/images/midu.ico";
 
 const Index = ({ children }) => {
   const bg = useColorModeValue("light.100", "lightDark.900");

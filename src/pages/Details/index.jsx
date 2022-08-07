@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import Gif from "components/Gifapp/singleGif";
-import useSingleGif from "hooks/useSingleGif";
-import Spinner from "components/Spinner";
+import Gif from "@/components/Gifapp/singleGif";
+import useSingleGif from "@/hooks/useSingleGif";
+import Spinner from "@/components/Spinner";
 import { Helmet } from "react-helmet";
 import { chakra, Box, Flex, SimpleGrid, Button } from "@chakra-ui/react";
 import toast from "react-hot-toast";
 import { motion } from "framer-motion";
 import { IoCopyOutline } from "react-icons/io5";
 import confetti from "canvas-confetti";
-import Section from "components/Global/Section";
+import Section from "@/components/Global/Section";
 
 export default function Detail() {
   let params = useParams();

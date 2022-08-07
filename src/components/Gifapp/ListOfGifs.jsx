@@ -1,6 +1,7 @@
 import React from "react";
-import Gif from "./gifComponent";
 import { SimpleGrid  } from "@chakra-ui/react";
+
+import Gif from "./gifComponent";
 
 export default function ListOfGifs({ gifs }) {
   return (

@@ -3,8 +3,8 @@ import { chakra, Box, useColorModeValue, Text, HStack } from "@chakra-ui/react";
 import { Helmet } from "react-helmet";
 import { BiSticker } from "react-icons/bi";
 import { FaRegStar } from "react-icons/fa";
-import { Section, ListOfTrending } from "components";
-import ListOfStickers from "components/Gifapp/ListOfStickers";
+import { Section, ListOfTrending } from "@/components";
+import ListOfStickers from "@/components/Gifapp/ListOfStickers";
 
 const Home = () => {
   const border = useColorModeValue("gray.200", "gray.700");

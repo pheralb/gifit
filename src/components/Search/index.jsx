@@ -1,6 +1,5 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import useForm from "hooks/searchHook";
 import {
   Input,
   InputLeftElement,
@@ -8,6 +7,7 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 import { IoSearch } from "react-icons/io5";
+import useForm from "@/hooks/searchHook";
 
 export default function SearchForm({ initialKeyword = "" }) {
   const navigate = useNavigate();

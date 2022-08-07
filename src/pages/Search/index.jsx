@@ -1,14 +1,14 @@
 import React, { useCallback, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import Spinner from "components/Spinner/loader";
-import ListOfGifs from "components/Gifapp/ListOfGifs";
-import { useGifs } from "hooks/useGifs";
-import useNearScreen from "hooks/useNearScreen";
+import Spinner from "@/components/Spinner/loader";
+import ListOfGifs from "@/components/Gifapp/ListOfGifs";
+import { useGifs } from "@/hooks/useGifs";
+import useNearScreen from "@/hooks/useNearScreen";
 import debounce from "just-debounce-it";
 import { Helmet } from "react-helmet";
 import { Box, HStack, Icon, Text } from "@chakra-ui/react";
 import { IoSearchOutline } from "react-icons/io5";
-import Section from "components/Global/Section";
+import Section from "@/components/Global/Section";
 
 export default function Search() {
   let params = useParams();

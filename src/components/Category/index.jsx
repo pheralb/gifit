@@ -7,7 +7,8 @@ import {
   useColorModeValue,
   HStack,
 } from "@chakra-ui/react";
-import Click from "animations/click";
+
+import Click from "@/animations/click";
 
 export default function Category({ options = [] }) {
   const border = useColorModeValue("dark.300", "dark.700");

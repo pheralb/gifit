@@ -1,16 +1,22 @@
 import React, { Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
-import "App.css";
-
-import Search from "pages/Search";
-import Details from "pages/Details/index";
-import ErrorPage from "pages/404/index";
-
-import { Loader, Layout } from "components";
-import { GifsContextProvider } from "context/GifsContext";
 import { Toaster } from "react-hot-toast";
 
-const Home = React.lazy(() => import("pages/Home/"));
+// Custom styles ->
+import "@/styles/globals.css";
+
+// Pages ->
+import Search from "@/pages/Search";
+import Details from "@/pages/Details/index";
+import ErrorPage from "@/pages/404/index";
+
+// Layout ->
+import { Loader, Layout } from "@/components";
+
+// Context ->
+import { GifsContextProvider } from "@/context/GifsContext";
+
+const Home = React.lazy(() => import("@/pages/Home/"));
 function App() {
   return (
     <>

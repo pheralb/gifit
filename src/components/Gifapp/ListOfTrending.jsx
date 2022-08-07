@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { getTrendingGifs } from "services/getTrendingGifs";
-import Gif from "./gifComponent";
 import { SimpleGrid } from "@chakra-ui/react";
+
+import { getTrendingGifs } from "@/services/getTrendingGifs";
+import Gif from "./gifComponent";
 
 export default function ListOfTrending({ show }) {
   const [trends, setTrends] = useState([]);

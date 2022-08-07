@@ -1,7 +1,9 @@
 import React from "react";
 import { Box, Image } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
-import Hover from "animations/hover";
+
+import Hover from "@/animations/hover";
+
 export default function Gif({ title, id, url }) {
   return (
     <>

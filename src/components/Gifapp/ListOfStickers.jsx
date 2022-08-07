@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { getTrendingStickers } from "services/getTrendingStickers";
-import Gif from "./gifComponent";
 import { SimpleGrid } from "@chakra-ui/react";
+
+import { getTrendingStickers } from "@/services/getTrendingStickers";
+import Gif from "./gifComponent";
 
 export default function ListOfStickers({ show }) {
   const [trends, setTrends] = useState([]);

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { useGifs } from "hooks/useGifs";
-import getSingleGif from "services/getSingleGif";
+import { useGifs } from "@/hooks/useGifs";
+import getSingleGif from "@/services/getSingleGif";
 
 export default function useSingleGif({ id }) {
   const { gifs } = useGifs();
